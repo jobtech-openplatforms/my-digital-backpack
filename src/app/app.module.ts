@@ -114,7 +114,7 @@ import { FeedbackModalComponent } from './components/feedback-modal/feedback-mod
     routing,
     NgbModule.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDpWzuGB-wl7R_dgBRpRnGhE8NZZZuxdco',
+      apiKey: 'POSSIBLE_KEY_FOR_GOOGLE_MAPS',
       libraries: ['places']
     }),
     DynamicModule.withComponents([
