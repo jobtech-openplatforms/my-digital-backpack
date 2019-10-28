@@ -1,0 +1,64 @@
+<div *ngIf="document as doc">
+
+  <section class="document-page">
+    <div class="section-container">
+      <app-cv-profile-display [data]="doc.data.profile" [userId]="userId" [documentId]="doc.id"
+        [isEditable]="isEditable" (change)="onDocumentChange()"></app-cv-profile-display>
+
+      <div *ngFor="let category of doc.data.categories" class="category-container">
+        <hr class="hidden">
+        <div class="gig-container" *ngIf="category.type == 'gigWork'">
+          <app-editable-list class="responsive-2-col" [title]="category.title" [emptyText]="category.emptyText"
+            [dataSources]="category.list" [listSettings]="gigSettings" [isEditable]="isEditable"
+            [sortOn]="'aggregatedData.startDate'" (change)="onDocumentChange()"
+            (editCategory)="onEditCategories(category)">
+          </app-editable-list>
+        </div>
+        <div class="reviews-container" *ngIf="category.type == 'reviews'">
+          <app-editable-list class="" [title]="category.title" [emptyText]="category.emptyText"
+            [dataSources]="category.list" [listSettings]="reviewSettings" [isEditable]="isEditable"
+            (change)="onDocumentChange()" (editCategory)="onEditCategories(category)"></app-editable-list>
+        </div>
+        <div class="education-container" *ngIf="category.type == 'educations'">
+          <app-editable-list [title]="category.title" class="responsive-2-col" [emptyText]="category.emptyText"
+            [dataSources]="category.list" [listSettings]="educationSettings" [isEditable]="isEditable"
+            (change)="onDocumentChange()" (editCategory)="onEditCategories(category)"></app-editable-list>
+        </div>
+        <div class="employments-container" *ngIf="category.type == 'employments'">
+          <app-editable-list [title]="category.title" class="responsive-2-col" [emptyText]="category.emptyText"
+            [dataSources]="category.list" [listSettings]="employmentSettings" [isEditable]="isEditable"
+            (change)="onDocumentChange()" (editCategory)="onEditCategories(category)"></app-editable-list>
+        </div>
+        <div class="certifications-container" *ngIf="category.type == 'certificate'">
+          <app-editable-list class="responsive-3-col" class="responsive-2-col" [title]="category.title"
+            [emptyText]="category.emptyText" [dataSources]="category.list" [listSettings]="certificateSettings"
+            [isEditable]="isEditable" (change)="onDocumentChange()" (editCategory)="onEditCategories(category)">
+          </app-editable-list>
+        </div>
+      </div>
+      <div *ngIf="isEditable===true">
+        <hr class="">
+        <button class="inline-button add-section-button" (click)="onAddCategory()">
+          <i class="fas fa-plus"></i>
+          <span *ngIf="!doc.data.categories || doc.data.categories.length === 0">Add experience</span>
+          <span *ngIf="doc.data.categories && doc.data.categories.length > 0">Add new section</span>
+        </button>
+      </div>
+      <div class="verification-symbol-legend">
+        <hr>
+        <ul>
+          <li>
+            <app-validation-symbol [status]="'Validated'" [position]="'Inline'">
+            </app-validation-symbol>
+            <div> = Verified by <a href="https://openplatforms.org">Open Platforms</a></div>
+          </li>
+          <li>
+            <app-validation-symbol [status]="'Not Validated'" [position]="'Inline'">
+            </app-validation-symbol>
+            <div>= NOT verified</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>

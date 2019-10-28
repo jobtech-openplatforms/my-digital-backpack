@@ -1,0 +1,25 @@
+
+.social-login-button{
+    border: none;
+    background: gray;
+    padding: 0;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.social-login-button img {
+    width: 328px;
+    height: auto;
+}
+
+.login-info{
+    margin-top: 20px;
+}
+
+.invite-info{
+    max-width: 661px;
+}
+
+.section-container{
+    max-width: 726px;
+}

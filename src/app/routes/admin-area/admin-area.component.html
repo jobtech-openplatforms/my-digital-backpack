@@ -1,0 +1,16 @@
+<section class="admin-page">
+  <div class="section-container">
+
+    <h1>Admin area</h1>
+    <p class="ingress">
+      This is an interface for My Digital Backpack staff, you will need to be logged in with a service account to use
+      these functions.
+    </p>
+    <h2>Invites</h2>
+    <button class="btn btn-seconday" (click)="onCreateInvites()">Create invite code</button>
+
+    <h2>User management</h2>
+    <button class="btn btn-seconday" (click)="onDeleteUser()">Delete user</button>
+    <span class="delete-progress">{{deleteProgressMessage}}</span>
+  </div>
+</section>

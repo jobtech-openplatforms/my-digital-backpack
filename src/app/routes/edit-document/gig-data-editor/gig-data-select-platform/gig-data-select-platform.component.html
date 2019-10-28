@@ -1,0 +1,37 @@
+<div class="gig-data-select-platform">
+  <p>Here you can add experience from gig/sharing platforms you have been active on.</p>
+  <input type="search" class="form-control plattform-search" placeholder="Sök plattform"
+    (ngModelChange)="onChangeSearch($event)" [ngModel]="searchPhrase">
+
+  <div *ngIf="platforms && platforms.length > 0">
+    <div *ngIf="!platforms">
+      <p>Loading platforms...</p>
+    </div>
+
+    <div *ngIf="platforms">
+      <div *ngIf="filteredPlatforms.length==0">
+        <p>There is no platform that match your search phrase.</p>
+      </div>
+      <div class="data-source-list">
+        <div class="data-source" *ngFor="let platform of filteredPlatforms" (click)="onSelectDataSource(platform)">
+          <div class="panel-icon-container">
+            <div class="panel-icon" [ngStyle]="{'background-image': 'url(' + (platform.organization.logo) + ')'}"></div>
+          </div>
+          <div class="platform-info">{{platform.organization.name}}</div>
+          <div *ngIf="platform.connectionType=='Live'" class="inline-validated-data-symbol">
+            <app-validation-symbol [status]="'Validated'" [position]="'Inline'">
+            </app-validation-symbol>
+          </div>
+          <button class="inline-button add-button">
+            <i _ngcontent-c3="" class="fas fa-plus"></i>
+          </button>
+        </div>
+      </div>
+      <div>
+        <a href="javascript:void(0)" class="button-height-link add-custom-platform-button"
+          (click)="onAddCustomPlatform()">Add your own custom
+          platform</a>
+      </div>
+    </div>
+  </div>
+</div>

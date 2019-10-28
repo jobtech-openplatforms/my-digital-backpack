@@ -1,0 +1,34 @@
+<a href="javascript:void(0);" class="hidden-focus" ngbAutofocus></a>
+<div class="modal-header">
+    <h2>Verify your account</h2>
+</div>
+
+<div class="modal-body">
+    <div>
+
+        <p>
+            We have sent a verification email to your account: <b>{{email}}</b>
+        </p>
+        <p>
+            Please click on the link in the mail to verify your email adress, then reload this page to start using
+            Eastimate.
+        </p>
+        <p>
+            <a *ngIf="!sentEmail" href="javascript:void(0);" (click)="onSendNew()" class="">
+                Send new mail with verfication link
+            </a>
+            <b *ngIf="sentEmail">
+                A new verification link has been sent!
+            </b>
+        </p>
+
+    </div>
+</div>
+<div class="modal-footer" (keyup.enter)="onReload()">
+    <button (click)="onReload()" class="btn btn-primary right">
+        Reload page
+    </button>
+    <button (click)="onCancel()" class="btn btn-secondary left">
+        Cancel
+    </button>
+</div>

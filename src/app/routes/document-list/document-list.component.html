@@ -1,0 +1,43 @@
+<section class="document-list">
+  <div class="section-container">
+    <div *ngIf="(cvs | async) as documents; else loading">
+      <div *ngIf="documents.length === 0" class="onboarding-create-profile">
+        <h2>Create backpack</h2>
+        <p>A backpack is a profile where you can add/connect your experience and then share with clients etc. Since you
+          might
+          want to share different stuff with different people you can create multiple backpacks.</p>
+        <p>Let's create your first backpack!</p>
+      </div>
+      <ul>
+        <li *ngFor="let document of documents" class="panel">
+          <span ngbDropdown class="menu-button" [placement]="['bottom-right', 'top-right']">
+            <button class="inline-button no-button-bg" id="dropdownBasic1" container="body" ngbDropdownToggle><i
+                class="fas fa-bars"></i></button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button (click)="onEditDocument(document)" class="dropdown-item">Open</button>
+              <button (click)="onShareDocument(document)" class="dropdown-item">Share</button>
+              <button (click)="onRenameDocument(document)" class="dropdown-item">Rename</button>
+              <button (click)="onRemoveDocument(document)" class="dropdown-item">Delete</button>
+            </div>
+          </span>
+          <button class="document-content inline" (click)="onEditDocument(document)">
+            <h2>
+              {{ document.name }}
+              <span class="additional-heading" *ngIf="!document.isPublic">(private)</span>
+            </h2>
+            <span class="document-date toned-down">{{ document.created | date:'fullDate' }}</span>
+          </button>
+
+        </li>
+      </ul>
+      <button class="inline-button" (click)="onAddDocument()">
+        <i class="fas fa-plus"></i><span>Create new backpack</span>
+      </button>
+    </div>
+    <ng-template #loading>
+      <p>
+        Loading...
+      </p>
+    </ng-template>
+  </div>
+</section>

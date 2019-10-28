@@ -1,0 +1,86 @@
+<section class="profile-page">
+  <div class="section-container" *ngIf="isNewUser && isInviteValidated==false">
+    <div class="">
+      <h1>You need an invite!</h1>
+      <p class="ingress">
+        Please enter your invite code below to continue. If you don't have an invite code you can request one by
+        contacting
+        <a href="mailto:info@mydigitalbackpack.org">info@mydigitalbackpack.org</a>
+      </p>
+      <form #inviteForm="ngForm">
+        <input name="invitecode" placeholder="Enter code here" class="form-control" type="text" [(ngModel)]="invitecode"
+          required>
+      </form>
+      <p *ngIf="inviteError" class="alert alert-danger">
+        {{inviteError}}.
+      </p>
+      <app-submit-button [submit]="onValidateInvite" [form]="inviteForm" [label]="'Validate'"
+        [customClass]="'save-button btn btn-primary'">
+      </app-submit-button>
+      <p></p>
+    </div>
+  </div>
+  <div class="section-container" *ngIf="isNewUser == false || isInviteValidated==true">
+    <div>
+      <div class="" *ngIf="userData">
+        <form #valueForm="ngForm" novalidate>
+          <div *ngIf="isNewUser">
+            <h1>Welcome!</h1>
+            <p class="ingress">Before creating your first backpack, let's first add some basic info about you.
+            </p>
+          </div>
+
+          <h2 *ngIf="!isNewUser">Edit profile</h2>
+
+          <div class="input-container">
+            <label>Name</label>
+            <input name="name" class="form-control" type="text" [(ngModel)]="userData.name" required #name="ngModel">
+
+            <p *ngIf="name.invalid && (name?.dirty || name?.touched)" class="alert alert-danger">
+              <span *ngIf="!!name.errors?.required">
+                Name is required.
+              </span>
+            </p>
+          </div>
+          <div class="input-container">
+            <label>Email </label>
+            <input name="email" email="true" disabled="true" class="form-control" type="email"
+              [(ngModel)]="userData.email" required #email="ngModel">
+
+            <p *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+              <span *ngIf="email.invalid">
+                You need to enter a valid email address.
+              </span>
+            </p>
+            <!-- <p class="input-description">
+            Note: Your email adress will not be shown publicly, and will only be used for sending notifications to you.
+          </p> -->
+          </div>
+
+          <div class="input-container profile-image-container">
+            <label>Profile picture</label>
+            <app-image-upload-form-input [value]="userData.photo" [imageName]="photoFileName"
+              (change)="onPhotoChanged($event.value)"></app-image-upload-form-input>
+            <!-- <div class="image-container">
+            <div class="profile-image" *ngIf="userData.photo !=''" [ngStyle]="{'background-image': 'url(' + (userData.photo) + ')'}"></div>
+          </div>
+          <div class="upload-ui-container">
+            <label class="btn btn-secondary btn-file">
+              Upload <input type="file" style="display: none;" (change)="upload($event)" accept=".png,.jpg">
+            </label>
+            <div class="upload-status" *ngIf="uploadStatus!=''">
+              {{uploadStatus}}
+            </div>
+          </div> -->
+          </div>
+          <hr>
+          <div class="button-container">
+            <app-submit-button [submit]="onSaveProfile" [form]="valueForm" [label]="'Save'"
+              [customClass]="'save-button btn btn-primary'" [uiMessageChannel]="'editmodal'">
+            </app-submit-button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

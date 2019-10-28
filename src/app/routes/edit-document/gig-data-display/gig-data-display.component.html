@@ -1,0 +1,48 @@
+<div *ngIf="data && data.status !='incomplete'" (click)="onEditItem()" class="panel">
+  <div class="panel-content-container">
+    <div class="panel-icon-container">
+      <div *ngIf="data.aggregatedData.organization.logo" class="panel-icon"
+        [ngStyle]="{'background-image': 'url(' + (data.aggregatedData.organization.logo) + ')'}">
+      </div>
+    </div>
+    <div *ngIf="data.connectionState==='Loading'">
+      Connecting...
+    </div>
+    <div *ngIf="data.connectionState==='Connected'">
+      Connected, loading data...
+    </div>
+
+    <div *ngIf="data.connectionState === 'Manual' || data.connectionState === 'Synced'" class="display-value-container">
+      <span class="display-value-value">{{data.aggregatedData.noOfGigs || 0}}</span>
+      <span class="display-value-label">completed</span>
+
+    </div>
+  </div>
+
+  <h3 class="ellipsis">{{data.aggregatedData.organization.name}}</h3>
+  <p class="plattform-description ellipsis">{{data.aggregatedData.organization.description}}</p>
+
+  <div *ngIf="data.connectionState === 'Manual' || data.connectionState === 'Synced'" class="stats-container">
+    <div *ngIf="data.displaySettings.displayType=='AverageRating'">
+      <app-star-rating [noOfStars]="5" [value]="data.aggregatedData.averageRating.value"></app-star-rating>
+      <p class="rating-description">{{data.aggregatedData.averageRating.value | number:'1.0-1'}} based on
+        {{data.aggregatedData.noOfRatings}}
+        reviews</p>
+    </div>
+    <div *ngIf="data.displaySettings.displayType=='PercentageSuccessful'">
+      <p class="percentage-successful">{{data.aggregatedData.percentageSuccessful*100 | number:'1.0-0'}}%</p>
+      <p class="number-label">successful gigs<br>
+        based on
+        {{data.aggregatedData.noOfRatings}}
+        reviews</p>
+    </div>
+  </div>
+
+  <p class="date-container toned-down ellipsis">
+    {{data.aggregatedData.startDate | date:'MMM yyyy'}} -
+    {{(data.aggregatedData.endDate | date:'MMM yyyy')}}
+  </p>
+
+  <app-validation-symbol [status]="data.isValidated? 'Validated' : 'Not Validated'" [position]="'Top Right'">
+  </app-validation-symbol>
+</div>

@@ -1,0 +1,125 @@
+<a href="javascript:void(0);" class="hidden-focus" ngbAutofocus></a>
+<div *ngIf="state==='selectReviewType'">
+  <div class="modal-header">
+    <h2>Add recommendation</h2>
+  </div>
+  <div class="modal-body">
+    <h4>Available reviews</h4>
+    <p *ngIf="!availableReviews">Loading reviews...</p>
+    <p *ngIf="availableReviews && availableReviews.length === 0">No reviews found. If you want to show review from for
+      example a Gig platform you need to add this platform to your backpack first.</p>
+    <div *ngFor="let review of availableReviews">
+      <app-review-data-display [data]="review" (click)="onSelectReview(review)"></app-review-data-display>
+    </div>
+    <div>
+      <a href="javascript:void(0)" class="button-height-link" (click)="state='manualEntry'">Create new custom review</a>
+    </div>
+  </div>
+
+  <div class="modal-footer" *ngIf="editorSettings.isNew">
+    <span class="left">
+      <button (click)="onCancel()" class="btn btn-secondary">Back</button>
+    </span>
+  </div>
+  <div class="modal-footer" *ngIf="editorSettings.isNew==false">
+    <span class="right" *ngIf="isChanged">
+      <button (click)="onCancel()" class="btn btn-secondary">
+        Cancel
+      </button>
+      <app-submit-button [submit]="onConfirmManualData" [label]="'Save'" [customClass]="'btn btn-primary'">
+      </app-submit-button>
+    </span>
+
+    <span class="right" *ngIf="!isChanged">
+      <button (click)="onCancel()" class="btn btn-primary">
+        Done
+      </button>
+    </span>
+
+    <span class="left">
+      <button *ngIf="editorSettings.isNew==false && editorSettings.isDeleteEnabled==true" (click)="onDelete()"
+        class="delete-button btn btn-danger">
+        Delete
+      </button>
+    </span>
+  </div>
+</div>
+
+<div *ngIf="state==='manualEntry'">
+  <div class="modal-header">
+    <h2>Add recommendation</h2>
+  </div>
+  <div class="modal-body">
+    <!-- <app-review-data-display *ngIf="data" [data]="data"></app-review-data-display> -->
+    <form #valueForm="ngForm">
+      <app-dynamic-form-editor [values]="manualFormValues" [target]="data" (formChanged)="onChangedData()">
+      </app-dynamic-form-editor>
+    </form>
+  </div>
+
+  <div class="modal-footer" *ngIf="editorSettings.isNew">
+    <span class="left">
+      <button (click)="state='selectReviewType'" class="btn btn-secondary">Back</button>
+    </span>
+    <span class="right">
+      <app-submit-button [submit]="onConfirmManualData" [label]="'Add'" [customClass]="'btn btn-primary'">
+      </app-submit-button>
+    </span>
+  </div>
+  <div class="modal-footer" *ngIf="editorSettings.isNew==false">
+    <span class="right" *ngIf="isChanged">
+      <button (click)="onCancel()" class="btn btn-secondary">
+        Cancel
+      </button>
+      <app-submit-button [submit]="onConfirmManualData" [label]="'Save'" [customClass]="'btn btn-primary'">
+      </app-submit-button>
+    </span>
+
+    <span class="right" *ngIf="!isChanged">
+      <button (click)="onCancel()" class="btn btn-primary">
+        Done
+      </button>
+    </span>
+
+    <span class="left">
+      <button *ngIf="editorSettings.isNew==false && editorSettings.isDeleteEnabled==true" (click)="onDelete()"
+        class="delete-button btn btn-danger">
+        Delete
+      </button>
+    </span>
+  </div>
+</div>
+
+<div *ngIf="state=='editDisplay'">
+  <div class="modal-header">
+    <h2>Recommendation</h2>
+  </div>
+  <div class="modal-body">
+    <app-review-data-display *ngIf="data" [data]="data">
+    </app-review-data-display>
+  </div>
+
+  <div class="modal-footer">
+    <span class="right" *ngIf="isChanged">
+      <button (click)="onCancel()" class="btn btn-secondary">
+        Cancel
+      </button>
+      <button (click)="onSaveDataSource()" class="btn btn-primary">
+        Save
+      </button>
+    </span>
+
+    <span class="right" *ngIf="!isChanged">
+      <button (click)="onCancel()" class="btn btn-primary">
+        Done
+      </button>
+    </span>
+
+    <span class="left">
+      <button *ngIf="editorSettings.isNew==false && editorSettings.isDeleteEnabled==true" (click)="onDelete()"
+        class="delete-button btn btn-danger">
+        Delete
+      </button>
+    </span>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="header section-container" *ngIf="header.showHeader==true">
+  <div class="left">
+    <span *ngIf="header.backRoute!=''">
+      <button class="back-button" (click)="onBack()"><i class="fas fa-arrow-left"></i></button>
+    </span>
+    <span *ngIf="header.pageTitle==''" (click)="onHome()" class="app-logo">
+      <h1><img src="assets/gfx/logo-digital-backpack.png"> </h1>
+    </span>
+  </div>
+  <div class="center">
+    <div class="sharing-info" *ngIf="header.showSharing==true">
+      <button (click)="onSharing()" class="btn sharing-button">
+        Your profile is <b>Sharable</b>
+      </button>
+    </div>
+  </div>
+
+  <!-- <h1 *ngIf="header.pageTitle!==''" class="page-title">
+    {{header.pageTitle}}
+  </h1> -->
+
+  <!-- <span *ngIf="route==='edit-document'" ngbDropdown class="menu-button" [placement]="['bottom-left']">
+    <button class="btn inline" id="dropdownBasic1" ngbDropdownToggle>
+      <i class="fas fa-bars"></i>
+    </button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <button (click)="onGoToList()" class="dropdown-item">Show my CV:s</button>
+      <button (click)="onShare()" class="dropdown-item">Share this CV</button>
+    </div>
+  </span> -->
+
+  <div class="right">
+    <span *ngIf="userData && userData.id=='';" #loggedOut class="signed-out-container">
+      <div class="login-button-container">
+        <button class="login_button" (click)="onLogin()">Login/Create account</button>
+      </div>
+    </span>
+
+    <span *ngIf="userData && userData.id!='' && header.showLoggedInUser;" class="signed-in-container">
+      <span ngbDropdown class="menu-button" [placement]="['bottom-right', 'top-right']">
+        <button class="profile-button inline" id="dropdownBasic2" ngbDropdownToggle>
+          <span class="profile-image" [ngStyle]="{'background-image': 'url(' + (userData.photo) + ')'}"></span>
+          <!-- <span class="profile-name">{{userData.name}}</span> -->
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+          <button (click)="onLogout()" class="dropdown-item">Log out</button>
+          <button (click)="onEditProfile()" class="dropdown-item">Edit profile</button>
+        </div>
+      </span>
+    </span>
+  </div>
+</div>

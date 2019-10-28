@@ -1,0 +1,72 @@
+<div class="loginContent">
+    <div *ngIf="loginState=='login'">
+        <h3>Login with social media account</h3>
+        <div class="social-login-container resp-row-container">
+            <button class="btn google-login-button" (click)="onLoginGoogle()">
+                <img src="assets/gfx/google-login-button.png">
+                <span>Sign in with Google</span>
+            </button>
+            <button class="btn facebook-login-button" (click)="onLoginFacebook()">
+                <img src="assets/gfx/facebook-login-button.png">
+                <span>Sign in with Facebook</span>
+            </button>
+        </div>
+
+        <hr>
+
+        <h3>Alternative email login</h3>
+        <p *ngIf="resetSuccessMessage">{{resetSuccessMessage}}</p>
+        <input placeholder="Email" class="form-control" type="email" [(ngModel)]="email" />
+        <input placeholder="Password" type="password" class="form-control" [(ngModel)]="password" />
+        <p class="error" *ngIf="loginErrorMessage">
+            {{loginErrorMessage}}
+        </p>
+
+        <div class="">
+            <button class="btn btn-primary email-login-button" (click)="onLoginPassword()">Login</button>
+        </div>
+        <p>
+            <a class="" href="javascript:void(0);" (click)="loginState='createAccount'">Create new
+                account</a>
+        </p>
+        <p>
+            <a href="javascript:void(0);" (click)="loginState='resetPassword'">Reset password</a>
+        </p>
+
+    </div>
+
+    <div *ngIf="loginState=='resetPassword'">
+        <h2>Reset password</h2>
+        <p>
+            Enter you email, and we will send you a reset password email.
+        </p>
+        <input placeholder="Email" class="form-control" type="email" [(ngModel)]="email" />
+        <p class="errorMessage" *ngIf="resetErrorMessage">
+            {{resetErrorMessage}}
+        </p>
+        <div class="centerHorisontally">
+            <button class="btn btn-primary" (click)="onResetPassword()">Reset password</button>
+            <button class="btn btn-secondary" (click)="loginState='login'">Cancel</button>
+        </div>
+
+    </div>
+
+    <div *ngIf="loginState=='createAccount'">
+        <h2>Create account</h2>
+        <p>
+            Enter you name, email and password to create a new My Digital Backpack account.
+        </p>
+        <input placeholder="Name" class="form-control" type="text" [(ngModel)]="name" />
+        <input placeholder="Email" class="form-control" type="email" [(ngModel)]="email" />
+        <input placeholder="Password" class="form-control" type="password" [(ngModel)]="password" />
+        <input placeholder="Repeat password" class="form-control" type="password" [(ngModel)]="repeatPassword" />
+        <p class="error" *ngIf="createErrorMessage">
+            {{createErrorMessage}}
+        </p>
+
+        <div class="centerHorisontally">
+            <button class="btn btn-primary" (click)="onCreateAccount()">Create account</button>
+            <button class="btn btn-secondary" (click)="loginState='login'">Cancel</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<header>
+  <app-header></app-header>
+</header>
+<main [@routerTransition]="getState(o)">
+  <router-outlet #o="outlet"></router-outlet>
+</main>
+<app-feedback-button></app-feedback-button>

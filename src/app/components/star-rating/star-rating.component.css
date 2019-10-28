@@ -1,0 +1,23 @@
+.star-rating{
+  position: relative;
+  display: inline-block;
+}
+
+.star-list{
+
+}
+
+.star-list.filled{
+  position: absolute;
+  top: 0px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.star-filled polygon{
+  fill: orange;
+}
+
+.star-unfilled polygon{
+  fill: rgba(0, 0, 0, 0.21);
+}

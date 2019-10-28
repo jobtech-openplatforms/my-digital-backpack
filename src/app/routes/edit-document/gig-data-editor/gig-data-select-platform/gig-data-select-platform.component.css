@@ -1,0 +1,42 @@
+.plattform-search {
+    margin-bottom: 10px;
+}
+
+.data-source {
+    overflow: hidden;
+    padding: 7px 0px;
+    border-top: 1px solid #e6e9ec;
+    background: white;
+    display: flex;
+    align-items: center;
+}
+
+.data-source-list>div:first-child {
+    border: none;
+}
+
+.data-source .panel-icon-container {
+    float: left;
+    margin-right: 10px;
+}
+
+.data-source .platform-info {
+    float: left;
+    line-height: 50px;
+    vertical-align: middle;
+}
+
+.data-source .add-button {
+    float: right;
+    margin-top: 6px;
+    margin-left: auto;
+}
+
+.data-source .inline-validated-data-symbol {
+    margin-left: 10px;
+}
+
+.panel-icon-container {
+    background-image: url("../../../../../assets/gfx/placeholder-organisation.png");
+    background-size: cover;
+}

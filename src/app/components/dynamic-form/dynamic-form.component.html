@@ -1,0 +1,85 @@
+<div *ngFor="let value of values; let i = index" class="dynamic-form-element">
+       <div [ngSwitch]="value.type">
+              <div *ngSwitchCase="'group'" [class]="value.class || ''">
+                     <app-dynamic-form-editor [values]="value.children" (formChanged)="onChange()" [target]="target">
+                     </app-dynamic-form-editor>
+              </div>
+
+              <div *ngSwitchCase="'text'" [class]="value.class || ''">
+                     <label>{{value.name}}</label><br>
+                     <input [name]="(formId).toString()+'-'+value.name" type="text" class="form-control"
+                            [placeholder]="value.placeholder||''" [minlength]="value.minLength || ''" [id]="value.id"
+                            [maxlength]="value.maxLength || ''" [required]="value.required || 'false'"
+                            (ngModelChange)="onChange(value.propName, $event)" [ngModel]="getPropValue(value.propName)">
+              </div>
+
+              <div *ngSwitchCase="'email'" [class]="value.class || ''">
+                     <label>{{value.name}}</label><br>
+                     <input type="email" email class="form-control" [name]="(formId).toString()+'-'+value.name"
+                            [placeholder]="value.placeholder||''" [required]="value.required || 'false'" [id]="value.id"
+                            (ngModelChange)="onChange(value.propName, $event)" [ngModel]="getPropValue(value.propName)">
+              </div>
+
+              <div *ngSwitchCase="'boolean'" [class]="value.class || ''">
+                     <input class="form-control" [name]="(formId).toString()+'-'+value.name" type="checkbox"
+                            (ngModelChange)="onChange(value.propName, $event)" [id]="value.id"
+                            [ngModel]="getPropValue(value.propName)">
+                     <label class="inline-label">{{value.name}}</label>
+              </div>
+
+              <div *ngSwitchCase="'textarea'" [class]="value.class || ''">
+                     <label>{{value.name}}</label><br>
+                     <textarea type="text" [name]="(formId).toString()+'-'+value.name" class="form-control"
+                            [placeholder]="value.placeholder||''" [minlength]="value.minLength || ''"
+                            [maxlength]="value.maxLength || ''" [required]="value.required || 'false'" [id]="value.id"
+                            (ngModelChange)="onChange(value.propName, $event)"
+                            [ngModel]="getPropValue(value.propName)"></textarea>
+              </div>
+
+
+              <div *ngSwitchCase="'number'" [class]="value.class || ''">
+                     <label>{{value.name}}</label><br>
+                     <input type="number" [name]="(formId).toString()+'-'+value.name" class="form-control"
+                            [placeholder]="value.placeholder||''" [step]="value.valueStep || ''"
+                            [minlength]="value.valueMin || ''" [maxlength]="value.valueMax || ''"
+                            [required]="value.required || 'false'" (ngModelChange)="onChange(value.propName, $event)"
+                            [id]="value.id" [ngModel]="getPropValue(value.propName)">
+
+              </div>
+
+
+              <div *ngSwitchCase="'date'" [class]="value.class || ''">
+                     <label>{{value.name}}</label><br>
+                     <input type="date" [name]="value.id || (formId).toString()+'-'+value.name" class="form-control"
+                            [required]="value.required || 'false'" (ngModelChange)="onChange(value.propName, $event)"
+                            [id]="value.id" [ngModel]="getPropValue(value.propName)">
+              </div>
+
+              <div *ngSwitchCase="'month'" [class]="value.class || ''">
+                     <label>{{value.name}}</label><br>
+                     <input type="month" [name]="(formId).toString()+'-'+value.name" class="form-control"
+                            [required]="value.required || 'false'" (ngModelChange)="onChange(value.propName, $event)"
+                            [id]="value.id" [ngModel]="getPropValueAsMonth(value.propName)">
+              </div>
+
+              <div *ngSwitchCase="'select'" [class]="value.class">
+                     <label>{{value.name}}</label><br>
+                     <select type="select" [name]="(formId).toString()+'-'+value.name" class="form-control"
+                            [required]="value.required || 'false'" (ngModelChange)="onChange(value.propName, $event)"
+                            [id]="value.id" [ngModel]="getPropValue(value.propName)">
+                            <option *ngFor="let option of value.options" [value]="option.value">{{option.label}}
+                            </option>
+                     </select>
+              </div>
+
+              <div *ngSwitchCase="'custom'" [class]="value.class" [id]="value.id">
+                     <label>{{value.name}}</label><br>
+                     <ndc-dynamic [ndcDynamicComponent]="value.component"
+                            [ndcDynamicInputs]="{value: getPropValue(value.propName), propName: value.propName, data: value.data}"
+                            [ndcDynamicOutputs]="{change: onChangeFromObj}">
+                     </ndc-dynamic>
+              </div>
+
+              <hr *ngSwitchCase="'separator'" [class]="value.class">
+       </div>
+</div>

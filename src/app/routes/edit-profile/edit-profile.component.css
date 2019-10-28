@@ -1,0 +1,46 @@
+.location-container{
+  margin-bottom: 10px;
+}
+
+.profile-image-container{
+   overflow: auto;
+}
+
+.image-container{
+  width: 80px;
+  height: 80px;
+  float: left;
+  margin-right: 10px;
+  background-color: rgba(255, 255, 255, 0.4);
+  background-image: url("../../../assets/gfx/profile-picture01.png");
+  background-size: cover;
+  background-position: center;
+  border-radius: 3px;
+}
+
+.image-container .profile-image{
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+.upload-ui-container{
+  float: left;
+  height: 80px;
+  padding-top: 25px;
+}
+
+.button-container{
+  float: right;
+}
+
+.skill-container{
+  padding: 5px;
+  background-color: #e7eae4;
+  margin-bottom: 10px;
+}
+
+.remove-skill-button{
+  float: right;
+}

@@ -1,0 +1,40 @@
+<a href="javascript:void(0);" class="hidden-focus" ngbAutofocus></a>
+<div class="modal-header">
+  <h2>{{editorSettings.title}}</h2>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCancel()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div>
+    <form #valueForm="ngForm">
+      <app-dynamic-form-editor [values]="editorSettings.formValues" (formChanged)="onChange()" [target]="data">
+      </app-dynamic-form-editor>
+    </form>
+  </div>
+</div>
+<div class="modal-footer" (keyup.enter)="onDelete()">
+  <app-status-message-field [uiMessageChannel]="'editmodal'"></app-status-message-field>
+  <span class="left">
+    <button *ngIf="editorSettings.isNew==false && editorSettings.isDeleteEnabled==true" (click)="onDelete()"
+      class="delete-button btn btn-danger">
+      Delete
+    </button>
+  </span>
+  <span [hidden]="!isChanged" class="right">
+    <button (click)="onCancel()" class="btn btn-secondary">
+      Cancel
+    </button>
+    <app-submit-button [submit]="onConfirm" [form]="valueForm" [label]="'Save'" [customClass]="'btn btn-primary'"
+      [uiMessageChannel]="'editmodal'">
+    </app-submit-button>
+
+  </span>
+  <span [hidden]="isChanged" class="right">
+    <button (click)="onCancel()" class="btn btn-primary">
+      Done
+    </button>
+  </span>
+
+</div>

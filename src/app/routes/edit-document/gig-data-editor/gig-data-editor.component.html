@@ -1,0 +1,176 @@
+<a href="javascript:void(0);" class="hidden-focus" ngbAutofocus></a>
+<div *ngIf="state=='selectPlatform'">
+  <div class="modal-header">
+    <h2>Add platform</h2>
+  </div>
+  <div class="modal-body">
+    <app-gig-data-select-platform [platforms]="gigPlatforms" [alreadyAddedPlatforms]="alreadyAddedPlatforms"
+      (selected)="onSelectDataSource($event)">
+    </app-gig-data-select-platform>
+  </div>
+
+  <div class="modal-footer">
+    <span class="left">
+      <button (click)="onCancel()" class="btn btn-secondary">Cancel</button>
+    </span>
+  </div>
+</div>
+
+
+<div *ngIf="state=='emailValidation1'">
+  <form #emailForm="ngForm">
+    <div class="modal-header">
+      <h2>Add {{data.aggregatedData.organization.name}}</h2>
+    </div>
+    <div class="modal-body">
+      <p>
+        Enter the email adress you use on {{data.aggregatedData.organization.name}}.
+      </p>
+      <input class="form-control" type="email" name="email" required email [(ngModel)]="email">
+    </div>
+    <div class="modal-footer">
+      <app-status-message-field [uiMessageChannel]="'emailValidation1'"></app-status-message-field>
+      <span class="left">
+        <button (click)="onBack()" class="btn btn-secondary">Back</button>
+      </span>
+      <span class="right">
+        <app-submit-button [submit]="onSubmitEmail" [form]="emailForm" [label]="'Continue'"
+          [customClass]="'btn btn-primary'">
+        </app-submit-button>
+      </span>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="state=='oauthValidation1'">
+  <form #emailForm="ngForm">
+    <div class="modal-header">
+      <h2>Add {{data.aggregatedData.organization.name}}</h2>
+    </div>
+    <div class="modal-body">
+      <p>
+        We use the service My CV Data to collect data from {{data.aggregatedData.organization.name}}.
+      </p>
+      <p>
+        When you click Continue, a dialog from {{data.aggregatedData.organization.name}} will show where you'll need to
+        approve that
+        My CV Data collects yout information.
+      </p>
+    </div>
+
+    <div class="modal-footer">
+      <app-status-message-field [uiMessageChannel]="'oauthValidation1'"></app-status-message-field>
+      <span class="left">
+        <button (click)="onBack()" class="btn btn-secondary">Back</button>
+      </span>
+      <span class="right">
+        <app-submit-button [submit]="onSubmitOauth" [label]="'Continue'" [uiMessageChannel]="'oauthValidation1'"
+          [customClass]="'btn btn-primary'">
+        </app-submit-button>
+      </span>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="state=='oauthValidation2'">
+  <form #emailForm="ngForm">
+    <div class="modal-header">
+      <h2>Data collection approved</h2>
+    </div>
+    <div class="modal-body">
+      <p>
+        Now we are ready to fetch your data from {{data.aggregatedData.organization.name}}.
+      </p>
+    </div>
+    <div class="modal-footer">
+      <span class="left">
+        <button (click)="onBack()" class="btn btn-secondary">Back</button>
+      </span>
+      <span class="right">
+        <app-submit-button [submit]="onSaveDataSource" [label]="'Fortsätt'" [customClass]="'btn btn-primary'">
+        </app-submit-button>
+      </span>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="state=='manualEntry'">
+  <div class="modal-header">
+    <h2>Enter manually</h2>
+  </div>
+  <div class="modal-body">
+    <app-gig-data-display *ngIf="data && data.connectionType ==='ManuallyUpdated'" [data]="data"></app-gig-data-display>
+    <form #valueForm="ngForm">
+      <div *ngIf="data && data.connectionType === 'UserCreated'">
+        <app-dynamic-form-editor [values]="customFormValues" [target]="data" (formChanged)="onChangedData()">
+        </app-dynamic-form-editor>
+      </div>
+      <app-dynamic-form-editor [values]="manualFormValues" [target]="data" (formChanged)="onChangedData()">
+      </app-dynamic-form-editor>
+    </form>
+  </div>
+  <div class="modal-footer" *ngIf="editorSettings.isNew">
+    <span class="left">
+      <button (click)="onBack()" class="btn btn-secondary">Back</button>
+    </span>
+    <span class="right">
+      <app-submit-button [submit]="onConfirmManualData" [label]="'Add'" [customClass]="'btn btn-primary'">
+      </app-submit-button>
+    </span>
+  </div>
+  <div class="modal-footer" *ngIf="editorSettings.isNew==false">
+    <span class="right" *ngIf="isChanged">
+      <button (click)="onCancel()" class="btn btn-secondary">
+        Cancel
+      </button>
+      <app-submit-button [submit]="onConfirmManualData" [label]="'Save'" [customClass]="'btn btn-primary'">
+      </app-submit-button>
+    </span>
+
+    <span class="right" *ngIf="!isChanged">
+      <button (click)="onCancel()" class="btn btn-primary">
+        Done
+      </button>
+    </span>
+
+    <span class="left">
+      <button *ngIf="editorSettings.isNew==false && editorSettings.isDeleteEnabled==true" (click)="onDelete()"
+        class="delete-button btn btn-danger">
+        Delete
+      </button>
+    </span>
+  </div>
+</div>
+
+<div *ngIf="state=='editDisplay'">
+  <div class="modal-header">
+    <h2>Gig platform</h2>
+  </div>
+  <div class="modal-body">
+    <app-gig-data-display *ngIf="data" [data]="data"></app-gig-data-display>
+  </div>
+
+  <div class="modal-footer">
+    <span class="right" *ngIf="isChanged">
+      <button (click)="onCancel()" class="btn btn-secondary">
+        Cancel
+      </button>
+      <button (click)="onSaveDataSource()" class="btn btn-primary">
+        Save
+      </button>
+    </span>
+
+    <span class="right" *ngIf="!isChanged">
+      <button (click)="onCancel()" class="btn btn-primary">
+        Done
+      </button>
+    </span>
+
+    <span class="left">
+      <button *ngIf="editorSettings.isNew==false && editorSettings.isDeleteEnabled==true" (click)="onDelete()"
+        class="delete-button btn btn-danger">
+        Delete
+      </button>
+    </span>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div *ngIf="data.connectionState === 'Manual' || data.connectionState === 'Connected'" (click)="onEditItem()"
+  class="panel">
+  <div class="panel-content-container">
+    <div class="panel-icon-container">
+      <div class="panel-icon" *ngIf="data.aggregatedData.organization.logo !=''"
+        [ngStyle]="{'background-image': 'url(' + (data.aggregatedData.organization.logo) + ')'}"></div>
+    </div>
+    <div class="panel-icon-content">
+      <p><span *ngIf="data.aggregatedData.degree != degreeType.None"
+          class="degree">{{data.aggregatedData.degree}}</span>
+      </p>
+    </div>
+
+  </div>
+  <h3>
+    {{data.aggregatedData.fieldOfStudy}}
+  </h3>
+
+  <p class="organization-name">{{data.aggregatedData.organization.name}}</p>
+
+
+  <p>{{data.aggregatedData.summary}}</p>
+
+  <p class="date-container toned-down">{{data.aggregatedData.startDate | date:'MMM yyyy'}} -
+    <span *ngIf="data.aggregatedData.isOngoing==true">Now</span>
+    <span *ngIf="data.aggregatedData.isOngoing!=true">{{(data.aggregatedData.endDate | date:'MMM yyyy')}}</span>
+  </p>
+
+</div>

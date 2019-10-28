@@ -1,0 +1,15 @@
+<a href="javascript:void(0);" class="hidden-focus" ngbAutofocus></a>
+<div class="modal-header">
+  <!-- <h2>{{dialogHeading}}</h2>
+  <h2>Ge appen åtkomst till CVData</h2> -->
+</div>
+<div class="modal-body">
+  <span *ngIf="!showIframe">No iframe</span>
+  <iframe *ngIf="showIframe" [src]="safeAuthorizeUrl" width="100%" height="500" frameBorder="0"></iframe>
+</div>
+
+<div class="modal-footer">
+  <!-- <span class="left">
+    <button (click)="onCancel()" class="btn btn-secondary">Cancel</button>
+  </span> -->
+</div>

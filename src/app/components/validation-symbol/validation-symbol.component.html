@@ -1,0 +1,5 @@
+<div class="validated-data-symbol" [ngClass]="{'not-validated':status!=='Validated'}">
+  <i *ngIf="status === 'Validated'" class="fas fa-check"></i>
+  <i *ngIf="status === 'Loading'" class="fas fa-sync-alt"></i>
+  <i *ngIf="status === 'Not Validated'" class="fas fa-exclamation"></i>
+</div>

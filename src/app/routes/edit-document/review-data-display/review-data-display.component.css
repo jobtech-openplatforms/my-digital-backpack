@@ -1,0 +1,18 @@
+.panel-icon-container {
+    border-radius: 200px;
+    border: none;
+}
+
+.reviewer-name {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.panel-icon-container{
+    background-image: url("../../../../assets/gfx/placeholder-person.png");
+    background-size: cover;
+}
+
+.validated-data-symbol {
+    bottom: 3px;
+}

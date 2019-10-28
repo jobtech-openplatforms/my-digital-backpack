@@ -1,0 +1,29 @@
+<a href="javascript:void(0);" class="hidden-focus" ngbAutofocus></a>
+<div class="modal-header">
+  <h2>Bekräfta epostadress</h2>
+</div>
+<div class="modal-body">
+  <p>
+    Du har angett en ny epost-adress. För att kunna forsätta måste MyCVData verifiera adressen.
+    Tjänsten har skickat ett verifieringsmail till: <b>{{email}}</b>.
+  </p>
+  <div class="centered-text">
+    <img class="verify-email-image" src="assets/gfx/verify-email.png">
+  </div>
+  <p>
+    Öppna meddelandet och klicka på länken för att:
+  </p>
+  <ol>
+    <li>Verifiera din epostadress</li>
+    <li>Godkänna att MyCVData får hämta och dela din data med My Digital Backpack</li>
+  </ol>
+</div>
+
+<div class="modal-footer">
+  <!-- <span class="left">
+    <button (click)="onCancel()" class="btn btn-secondary">Tillbaka</button>
+  </span> -->
+  <span class="right">
+    <button (click)="onConfirm()" class="btn btn-primary">Fortsätt</button>
+  </span>
+</div>

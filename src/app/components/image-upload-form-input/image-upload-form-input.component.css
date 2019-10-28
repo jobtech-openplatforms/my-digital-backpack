@@ -1,0 +1,33 @@
+.image-container{
+  width: 80px;
+  height: 80px;
+  float: left;
+  margin-right: 10px;
+  background-color: rgb(255, 255, 255);
+  background-image: url('../../../assets/gfx/profile-picture01.png');
+  background-position: center;
+  background-size: cover;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+ }
+ 
+ .image-container .image{
+   background-size: cover;
+   background-position: center;
+   height: 100%;
+   width: 100%;
+ }
+ 
+ .upload-ui-container{
+   float: left;
+   padding-top: 16px;
+ }
+ 
+ .button-container{
+   float: right;
+ }
+
+ label {
+   text-transform: none;
+   letter-spacing: 0;
+ }

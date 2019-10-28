@@ -1,0 +1,14 @@
+<div class="image-upload-component">
+  <div class="image-container">
+    <div class="image" *ngIf="url !=''" [ngStyle]="{'background-image': 'url(' + (url) + ')'}"></div>
+  </div>
+  <div class="upload-ui-container">
+    <label class="btn btn-secondary btn-file">
+      Upload image <input type="file" style="display: none;" (change)="upload($event)" accept=".png,.jpg">
+    </label>
+    <label *ngIf="url && url!=''" (click)="clearImage()" class="btn btn-secondary btn-file">Clear</label>
+    <div class="upload-status" *ngIf="uploadStatus!=''">
+      {{uploadStatus}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,206 @@
+TODO:
+x fixat review photo
+x bugg: vid lägga till edu/empl
+x bugg: ta bort validate data från reviews (?)
+x bugg: document hoppar till när man skapar nya categories/items
+x lägga till kategori
+  x snyggare valruta
+  x Automatiskt gå till att lägga till gig efter att man valt gigkategori etc
+x kolla bugg där man kan lägga till gigster flera gånger
+x kolla bugg när man vill få data verifierad
+x felmeddelande när man väljer cancel på add section
+x support for misc kortare uppdrag
+  x lägg till alternativ som val på första sidan
+  x stöd för att lägga/editera till beskrivning för misc
+x add review
+  x choose between available reviews
+  x create validated review from validated review
+  x add custom review
+------------------------------------------------------------------------------
+x bug: back från custom platform lisatr inte plattformar
+x bug: back från custom review
+x kunna spara display settings för validerad data
+x lägg till stöd för certifikat
+  x display
+  x editor
+  x function
+x bug validering av review tar tid, change detection?
+x bug - man kommer nu till manuell förändring när man klickar på validerad review/certifikat
+x byta domän på firebase till mydigitalbackpack
+x style email login
+  x error message om man skriver fel email
+  x nicer email prompt window
+  x bättre namn på tjänst i email
+  x slå på localstorage email-cache
+x bug ålder visas även när den är tom
+x bug när man laddar upp för liten bild
+x bugg validate email när man vill bekräfta manuell data
+x fixa inloggning
+x epost-validering login-fält
+x kolla över dataflöde till nya servern/functions
+x temp privacy police
+x enable facebook/google login
+------------------------------------------------------------------------------
+x fixa länk till new user-skärm
+  x alltid publik profil
+    x information om att all data man lägger upp är publik
+x invitefunktionalitet
+  x fylla i kod innan man loggar in/skapar konto
+  x markera kod som förbrukad
+------------------------------------------------------------------------------
+x sätt upp e2e-testramverk
+x byt email-baserad inloggning till lösenordsbaserad
+  x uppdatera login för att förenkla e2e
+  x mindre förvirrande när man har mail på annan device
+x se till att man routas rätt om man
+  x inte är inloggad (förutom på start och document)
+  x inte har skapat profil än (gå till new-user)
+  x gå automatiskt från start till list om man är inloggad
+  x redirect till org url efter inloggning
+x admin area
+x skapa invitekoder
+x ta bort användardata
+  x skapa remove user data command med proper auth
+  x ta bort user data
+  x ta bort relaterade backpacks
+  x ta bort userResource
+  x ta bort dataSources
+  x resultat callback från command queue
+------------------------------------------------------------------------------
+
+- e2e testing
+  x testa skapa konto
+  - använd gemensam fixture för test suites
+  - skapa testkonto
+    - funktioner för att rensa test accounts
+      - ta bort user helt (fb auth är nu kvar)
+      x tömma user data
+  - testa att editera profil
+  - testa att det går att lägga till items manuellt
+    - profil
+      - med/utan födelsedatum
+      - med utan ort
+      - titel
+      - bio
+    - manuell plattform
+    - custom plattform
+    - utbildning
+    - jobb
+  - granska publikt cv
+    - ska inte kunna editeras
+    - ska visa rätt data
+  - undersök om det går att sätta upp koppling till freelancer
+  - uppdatera testprotokoll med det som behöver testas manuellt
+
+- accessability
+  - gör klickbara divar, tabbable och klickbara med return (men bara i editläge)
+
+- admin sida felmeddelande när man misslyckas med att skapa invites (t ex ej adminkonto)
+
+- låsa databas för ändringar från ej verifierad epostadress (man kan teoretiskt skapa dokument nu)
+
+- BUG: add photo uppdaterar inte profilbild eller bild i CV (?) direkt
+- BUG: paus efter att man lagt till freelancer innan listan stängs ner, man hinner klicka igen
+
+- namn på mycvdata
+- subdomäner joachim verona
+
+- filtrera badges/achievements
+
+- lägga upp information om gig på jobtech-gig
+
+
+x onboarding
+  x gå till skapa profilsida när man loggar in första gången (så länge man inte fyllt i namn?)
+  x promta att man ska skapa sitt sin första profil, om man inte har någon profil
+  - tips om att lägga till experience
+  x förklara mycvdata innan man tvingas skapa konto
+
+
+
+- BUG: if there are multiple accounts connected to the same mycvdata-id only the first does recieve updates
+  - if removing/creating new user and old is left
+  - if login in with same mycvdata-user on two backpack acccounts
+
+- delete data/connections 
+  - after platform is removed
+  - after backpack is removed
+  - after user is removed
+    - remove also user data
+
+- support logout (when logging out in other windows)
+
+- snygga till flöde för freelancer
+  - inloggning till mycvdata
+  x chromeless svarssida
+  - laddmätare/statustext
+  - snyggare hantering av pop-ups
+
+
+x default icons
+  x education
+  x employment
+  x review
+  - gig platforms
+
+- koll över flöde för mobilt bank-id + oath
+  x förklara vad myCVdata är
+  - förklara att man kommer skickas till en ruta från extern plattform
+
+- updatera lista med plattformar
+- uppdatera logotyper filnamn
+
+- Editera kategori
+  x custom categories
+  x change name
+  - ändra ordning på kategorier
+
+- auto-fill epostadress till verifiera data formulär
+  - spara epostadresser kopplat till olika plattformar
+
+- se till att lista med gig-plattformar visas direkt utan laddning
+
+- skapa text section
+- flöde om plattform redan är autentiserad
+- add support for pasting images
+
+-add status to gig-display/data
+  - loading data
+  - waiting for email validation
+  - data update available
+
+
+- adapt to medium mobile (iphone 5)
+  - share link is too long on mobile
+
+- validera email när man requestar validering från plattform (om inte adressen redan är validerad)
+  - spara lista på validerade adresser
+  - validera epost-cloud funktion
+  - känna av att adress är validerat för att fortsätta
+    - lås upp fortsättning eller visa unverified status på display
+  - try again-funktionalitet?
+
+- validated data from server
+  x updatera sparad data via cloud function
+  x updatera client appen
+  - updated data available-notis
+  - update data-button
+
+- add flow for oath-flow
+
+- edit data display
+  - välja tidsperiod
+
+- sort cv:s based on create date
+
+ - edit order of categories
+
+- support for organisations-input
+  - create mock database
+    - start with universities/gig platforms/and some companies
+    - query on country/state/type/tags
+    - think about data conflicts (multinational, ended/merged, duplicated names)
+    - who has the right to update organization info
+  - support in dynamic-form-component for value/editor-plugins
+
+

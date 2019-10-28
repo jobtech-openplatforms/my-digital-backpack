@@ -1,0 +1,27 @@
+<a href="javascript:void(0);" class="hidden-focus" ngbAutofocus></a>
+<div class="modal-header">
+  <h3>Share your Backpack</h3>
+</div>
+<div class="modal-body">
+  <div>
+    <p>
+      <b>Please note:</b> Anyone that has access to the link below can see your
+      profile. Since you can't control if someone shares your link, you should consider anything you
+      add to your backpack as publically available.
+    </p>
+    <p>
+      Use the following link if you want to
+      share your backpack:
+    </p>
+    <p class=share-link>
+      <a [href]="link" target="blank">{{link}}</a>
+    </p>
+  </div>
+</div>
+<div class="modal-footer">
+  <div class="button-container" (keyup.enter)="onConfirm()">
+    <button (click)="onConfirm()" class="btn btn-primary">
+      Done
+    </button>
+  </div>
+</div>

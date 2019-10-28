@@ -1,0 +1,19 @@
+
+.certificate-name {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.organization{
+    margin-bottom: 3px;
+}
+
+.score{
+    text-align: center;
+    display: inline-block;
+}
+
+.panel-icon-container{
+    background-image: url("../../../../assets/gfx/placeholder-certification.png");
+    background-size: cover;
+}

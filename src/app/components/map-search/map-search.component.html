@@ -1,0 +1,20 @@
+{{location|json}}
+<input name="mapsearch" placeholder="Search..." autocorrect="off" autocapitalize="off"
+       spellcheck="off"
+       type="text"
+       ngModel
+       autocomplete="nope"
+       class="form-control" #locationSearch required
+       #mapsearch="ngModel"
+>
+
+<p *ngIf="city.invalid && (mapsearch.dirty || mapsearch.touched)"
+   class="alert alert-danger">
+  You need to select a location.
+</p>
+<agm-map [latitude]="location.latitude" [longitude]="location.longitude"
+         [scrollwheel]="false" [zoom]="googleMapsData.zoom">
+  <agm-marker [latitude]="location.latitude"
+              [longitude]="location.longitude"></agm-marker>
+</agm-map>
+<input type="hidden" name="test-b" [ngModel]="location.city" required #city="ngModel"/>

@@ -1,0 +1,124 @@
+<a href="javascript:void(0);" class="hidden-focus" ngbAutofocus></a>
+<div *ngIf="state==='selectCertificateType'">
+  <div class="modal-header">
+    <h2>Add certificate</h2>
+  </div>
+  <div class="modal-body">
+    <h4>Available certificates</h4>
+    <p *ngIf="!availableCertificates">Loading certificates...</p>
+    <p *ngIf="availableCertificates && availableCertificates.length === 0">No certificates found.</p>
+    <div *ngFor="let certificate of availableCertificates">
+      <app-certificate-data-display [data]="certificate" (click)="onSelectCertificate(certificate)">
+      </app-certificate-data-display>
+    </div>
+    <div>
+      <a href="javascript:void(0)" class="button-height-link" (click)="state='manualEntry'">Create new custom
+        certificate</a>
+    </div>
+  </div>
+
+  <div class="modal-footer" *ngIf="editorSettings.isNew">
+    <span class="left">
+      <button (click)="onCancel()" class="btn btn-secondary">Back</button>
+    </span>
+  </div>
+  <div class="modal-footer" *ngIf="editorSettings.isNew==false">
+    <span class="right" *ngIf="isChanged">
+      <button (click)="onCancel()" class="btn btn-secondary">
+        Cancel
+      </button>
+      <app-submit-button [submit]="onConfirmManualData" [label]="'Save'" [customClass]="'btn btn-primary'">
+      </app-submit-button>
+    </span>
+
+    <span class="right" *ngIf="!isChanged">
+      <button (click)="onCancel()" class="btn btn-primary">
+        Done
+      </button>
+    </span>
+
+    <span class="left">
+      <button *ngIf="editorSettings.isNew==false && editorSettings.isDeleteEnabled==true" (click)="onDelete()"
+        class="delete-button btn btn-danger">
+        Delete
+      </button>
+    </span>
+  </div>
+</div>
+
+<div *ngIf="state==='manualEntry'">
+  <div class="modal-header">
+    <h2>Add certificate</h2>
+  </div>
+  <div class="modal-body">
+    <form #valueForm="ngForm">
+      <app-dynamic-form-editor [values]="manualFormValues" [target]="data" (formChanged)="onChangedData()">
+      </app-dynamic-form-editor>
+    </form>
+  </div>
+
+  <div class="modal-footer" *ngIf="editorSettings.isNew">
+    <span class="left">
+      <button (click)="state='selectCertificateType'" class="btn btn-secondary">Back</button>
+    </span>
+    <span class="right">
+      <app-submit-button [submit]="onConfirmManualData" [label]="'Add'" [customClass]="'btn btn-primary'">
+      </app-submit-button>
+    </span>
+  </div>
+  <div class="modal-footer" *ngIf="editorSettings.isNew==false">
+    <span class="right" *ngIf="isChanged">
+      <button (click)="onCancel()" class="btn btn-secondary">
+        Cancel
+      </button>
+      <app-submit-button [submit]="onConfirmManualData" [label]="'Save'" [customClass]="'btn btn-primary'">
+      </app-submit-button>
+    </span>
+
+    <span class="right" *ngIf="!isChanged">
+      <button (click)="onCancel()" class="btn btn-primary">
+        Done
+      </button>
+    </span>
+
+    <span class="left">
+      <button *ngIf="editorSettings.isNew==false && editorSettings.isDeleteEnabled==true" (click)="onDelete()"
+        class="delete-button btn btn-danger">
+        Delete
+      </button>
+    </span>
+  </div>
+</div>
+
+<div *ngIf="state=='editDisplay'">
+  <div class="modal-header">
+    <h2>Edit certificate</h2>
+  </div>
+  <div class="modal-body">
+    <app-certificate-data-display [data]="data">
+    </app-certificate-data-display>
+  </div>
+
+  <div class="modal-footer" *ngIf="editorSettings.isNew==false">
+    <span class="right" *ngIf="isChanged">
+      <button (click)="onCancel()" class="btn btn-secondary">
+        Cancel
+      </button>
+      <app-submit-button [submit]="onConfirmManualData" [label]="'Save'" [customClass]="'btn btn-primary'">
+      </app-submit-button>
+    </span>
+
+    <span class="right" *ngIf="!isChanged">
+      <button (click)="onCancel()" class="btn btn-primary">
+        Done
+      </button>
+    </span>
+
+    <span class="left">
+      <button *ngIf="editorSettings.isNew==false && editorSettings.isDeleteEnabled==true" (click)="onDelete()"
+        class="delete-button btn btn-danger">
+        Delete
+      </button>
+    </span>
+  </div>
+</div>

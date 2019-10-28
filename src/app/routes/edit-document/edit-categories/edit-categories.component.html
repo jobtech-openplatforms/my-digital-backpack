@@ -1,0 +1,35 @@
+<a href="javascript:void(0);" class="hidden-focus" ngbAutofocus></a>
+<div >
+  <div class="modal-header">
+    <h2>Edit sections</h2>
+  </div>
+  <div class="modal-body">
+    <table class="category-table">
+      <tbody>
+        <tr *ngFor="let category of categories" class="category-row">
+          <td class="title-column">
+            <input [(ngModel)]="category.title" class="form-control" type="text">
+          </td>
+          <td>
+              <button (click)="onUp(category)" aria-label="Move section up" class="inline-button"><i class="fas fa-chevron-up"></i></button>
+            </td>
+            <td>
+                <button (click)="onDown (category)" aria-label="Move section down" class="inline-button"><i class="fas fa-chevron-down"></i></button>
+              </td>
+          <td>
+              <button (click)="onDelete(category)" aria-label="Delete section" class="inline-button"><i class="fas fa-trash-alt"></i></button>
+            </td>
+        </tr>
+      </tbody>
+      </table>
+
+  </div>
+
+  <div class="modal-footer">
+    <span class="right">
+      <button (click)="onConfirm()" class="btn btn-secondary">Done</button>
+    </span>
+  </div>
+</div>
+
+

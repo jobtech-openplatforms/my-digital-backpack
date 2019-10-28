@@ -1,0 +1,21 @@
+ul {
+  list-style: none;
+  padding-inline-start: 0px;
+}
+
+li h3{
+  display: inline-block;
+}
+
+li .menu-button{
+  float: right;
+}
+
+.dropdown-toggle::after {
+  display:none;
+  background: none;
+}
+
+.document-content{
+  text-align: left;
+}

@@ -1,0 +1,33 @@
+.section-type {
+    overflow: hidden;
+    padding: 7px 0px;
+    border-top: 1px solid #e6e9ec;
+    background: white;
+}
+
+.section-type-title{
+    margin-right: 60px;
+}
+.section-type-info{
+    margin-right: 60px;
+}
+
+.section-type-list>div:first-child {
+    border: none;
+}
+
+.section-type .panel-icon-container{
+    float: left;
+    margin-right: 10px;
+}
+
+.section-type .platform-info{
+    float: left;
+    line-height: 50px;
+    vertical-align: middle;
+}
+
+.section-type .add-button {
+    float: right;
+    margin-top: 6px;
+}

@@ -1,0 +1,27 @@
+<div *ngIf="isEditable===true || dataSources.length>0" [class.editMode]="isEditable===true">
+  <div *ngIf="isEditable" class="list-header">
+    <h4><a href="javascript:void(0)" (click)="onEditCategory()">{{title}}</a></h4>
+    <button *ngIf="isEditable===true" class="edit-item-button inline-button" [id]="'add-'+title+'-button'"
+      (click)="onAddItem()">
+      <i class="fas fa-plus"></i>
+      <!-- <span>{{addLabel}}</span> -->
+    </button>
+  </div>
+  <div *ngIf="!isEditable" class="list-header">
+    <h4>{{title}}</h4>
+  </div>
+  <p *ngIf="dataSources.length==0" class="toned-down">{{emptyText}}</p>
+  <div class="item-list">
+    <div *ngFor="let itemId of dataSources; let i=index;" class="item-container" [tabindex]="isEditable?0:-1"
+      (click)="onEdit(itemId)" (keydown.enter)="onEdit(itemId)">
+      <!-- <button class="btn edit-button inline" (click)="onEdit(item)"><i class="fas fa-bars"></i></button> -->
+      <ndc-dynamic [ndcDynamicComponent]="listSettings.rendererComponent"
+        [ndcDynamicInputs]="{data: getSynchedItem(itemId)}"></ndc-dynamic>
+    </div>
+    <!-- <div *ngIf="isEditable===true" class="item-container empty-item" (click)="onAddItem()">
+      <div class="panel">
+        <i class="fas fa-plus"></i>
+      </div>
+    </div> -->
+  </div>
+</div>

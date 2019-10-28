@@ -1,0 +1,36 @@
+h1, h2, h3, h4{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.list-header h4 a {
+    color: inherit;
+}
+
+button.edit-item-button {
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+
+.item-container{
+    display: block;
+    background: none;
+    border: none;
+    text-align: left;
+    margin-right: 0;
+}
+
+.empty-item {
+    min-height: 120px;
+}
+
+.empty-item .panel{
+    display: flex;
+    min-height: 130px;
+}
+
+.empty-item .panel i{
+    margin: auto;
+    font-size: 34px;
+    color: #b8b8b8;
+}

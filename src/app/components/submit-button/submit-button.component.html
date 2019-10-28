@@ -1,0 +1,7 @@
+<div class="submit-button-container">
+  <button class="submit-button" (click)="onSubmit()" [disabled]="!enabled" [ngClass]="customClass" [class.disabled]="!enabled"
+    [class.inprogress]="isInProgress" [class.completed]="isCompleted">
+    {{myLabel}}
+  </button>
+  <p [class]="'messageField '+messageType" *ngIf="message!=''">{{message}}</p>
+</div>

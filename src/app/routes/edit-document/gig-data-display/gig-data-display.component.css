@@ -1,0 +1,45 @@
+.icon-column{
+    width: 50px;
+    float: left;
+    text-align: center;
+}
+
+.stats-container{
+    margin-bottom: 18px;
+}
+
+.percentage-successful{
+    font-size: 26px;
+    font-weight: bold;
+    float: left;
+    margin-right: 10px;
+    padding-top: 4px;
+}
+
+.plattform-description{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    clear: both;
+}
+
+.date-container{
+    margin-top: 10px;
+    position: absolute;
+    bottom: 10px;
+}
+
+h3{
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.rating-description{
+    margin-bottom: 0;
+}
+
+.number-label{
+    height: 50px;
+    vertical-align: middle;
+    display: table-cell;
+    line-height: 1.2;
+}

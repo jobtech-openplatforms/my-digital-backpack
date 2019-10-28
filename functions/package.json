@@ -1,0 +1,28 @@
+{
+  "name": "functions",
+  "main": "lib/functions/src/index.js",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "lint": "ng lint",
+    "build": "./node_modules/.bin/tsc",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "escape-html": "^1.0.3",
+    "firebase-admin": "~6.0.0",
+    "firebase-functions": "^2.0.3",
+    "nodemailer": "^6.0.0",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5",
+    "unescape-html": "^1.1.0",
+    "cors": "^2.8.5"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "private": true
+}

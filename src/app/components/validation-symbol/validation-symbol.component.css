@@ -1,0 +1,25 @@
+.validated-data-symbol {
+    border-radius: 100px;
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    line-height: 28px;
+    color: #FFFFFF;
+    background: #0089ff;
+}
+
+.validated-data-symbol.not-validated {
+    color: #ffffffbf;
+    background: #00000017;
+}
+
+:host(.position-top-right) {
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+:host(.position-inline) {
+    display: inline-block;
+}

@@ -1,0 +1,45 @@
+<a href="javascript:void(0);" class="hidden-focus" ngbAutofocus></a>
+<div class="modal-header">
+  <!-- <h2>Do you want to get this data confirmed?</h2> -->
+
+  <div class="open-platforms-info">
+    <div class="logos-container">
+      <img class="open-platforms-logo" alt="Open Platforms logo" src="assets/gfx/open-platforms-api-logo.png">
+      <img class="powered-by-jobtech-logo" alt="powered by jobtech logo" src="assets/gfx/powered-by-jobtech.png">
+    </div>
+
+    <p>My digital backpack uses the Open Platforms API to:</p>
+    <ul>
+      <li>make sure your data is always updated</li>
+      <li>to verify your data, so you get a nice blue checkbox </li>
+    </ul>
+    <p class="open-platforms-link">
+      <a href="https://www.openplatforms.org">WHAT IS OPEN PLATFORMS?</a>
+    </p>
+  </div>
+</div>
+<div class="modal-body">
+  <!-- <div class="validated-data-symbol-container">
+    <div class="validated-data-symbol fade-animation">
+      <i class="fas fa-check"></i>
+    </div>
+  </div> -->
+
+  <p>{{data.aggregatedData.organization.name}} is <b>NOT</b> connected to Open Platforms.</p>
+  <p>
+    Would you want us to tell {{data.aggregatedData.organization.name}} that you want access to your data?
+  </p>
+
+</div>
+<div class="modal-footer">
+  <app-status-message-field [uiMessageChannel]="'confirmManualEntry'"></app-status-message-field>
+  <!-- <span class="left">
+    <button (click)="onBack()" class="btn btn-secondary">Tillbaka</button>
+  </span> -->
+  <span class="right">
+    <button (click)="onCancel()" id="skip-verification-button" class="btn btn-secondary">Skip</button>
+    <app-submit-button [submit]="onConfirm" [label]="'Tell them!'" [customClass]="'btn btn-primary'"
+      [uiMessageChannel]="'confirmManualEntry'">
+    </app-submit-button>
+  </span>
+</div>

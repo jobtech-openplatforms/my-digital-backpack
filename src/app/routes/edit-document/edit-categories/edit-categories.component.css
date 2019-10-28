@@ -1,0 +1,26 @@
+.category-table{
+    width: 100%;
+}
+
+.category-row{
+    width: 100%;
+    border-bottom: 1px #ced4da  solid;
+}
+
+.category-row:last-of-type{
+    border-bottom: none;
+}
+
+.category-row td{
+    padding: 10px 0 10px 10px;
+}
+
+.category-row td.title-column{
+    width: 100%;
+    padding-left: 0px;
+}
+
+.category-row input,
+.category-row button{
+    margin: 0;
+}

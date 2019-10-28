@@ -1,0 +1,49 @@
+<div *ngIf="data && data.status !='incomplete'" (click)="onEditItem()" class="panel">
+
+  <div class="panel-content-container">
+    <div class="panel-icon-container">
+      <div *ngIf="data.aggregatedData.organization.logo" class="panel-icon"
+        [ngStyle]="{'background-image': 'url(' + (data.aggregatedData.organization.logotype) + ')'}">
+      </div>
+    </div>
+
+    <div *ngIf="data.connectionState==='Loading'">
+      Loading data...
+    </div>
+
+    <div *ngIf="data.connectionState === 'Manual' || data.connectionState === 'Connected'" class="no-of-jobs-container">
+      <div>
+
+      </div>
+
+      <p *ngIf="data.aggregatedData.scoreValue" class="display-value-container">
+        <span class="display-value-value">{{data.aggregatedData.scoreValue}}</span>
+        <span class="display-value-label">{{data.aggregatedData.scoreLabel}}</span>
+      </p>
+      <p *ngIf="!data.aggregatedData.scoreValue" class=certificate-summary>{{data.aggregatedData.summary}}</p>
+
+    </div>
+  </div>
+
+  <h3 class=certificate-summary>{{data.aggregatedData.title}}</h3>
+  <p class="">
+    <span *ngIf="data.aggregatedData.type ==='Badge'" class="certificate-type keep-together">
+      Badge,
+    </span>
+    <span *ngIf="data.aggregatedData.type ==='QualificationAssessment' || data.aggregatedData.type ==='Course'"
+      class="certificate-type keep-together">
+      Skill certificate,
+    </span>
+    <span class="organization">&nbsp;{{data.aggregatedData.organization.name}}</span>
+  </p>
+
+
+  <p class="date-container toned-down ellipsis">
+    {{(data.aggregatedData.date | date:'MMM yyyy')}}
+  </p>
+
+
+
+  <app-validation-symbol [status]="data.isValidated? 'Validated' : 'Not Validated'" [position]="'Top Right'">
+  </app-validation-symbol>
+</div>

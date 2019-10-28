@@ -1,0 +1,14 @@
+.date-container{
+    margin-top: -5px;
+    margin-bottom: 0;
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.panel-icon-container{
+    background-image: url("../../../../assets/gfx/placeholder-education.png");
+    background-size: cover;
+}

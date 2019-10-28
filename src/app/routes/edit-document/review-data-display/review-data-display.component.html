@@ -1,0 +1,36 @@
+<div *ngIf="data && data.status !='incomplete'" (click)="onEditItem()" class="panel">
+  <div class="panel-content-container">
+    <div class="panel-icon-container">
+      <div *ngIf="data.aggregatedData.reviewer.photo" class="panel-icon"
+        [ngStyle]="{'background-image': 'url(' + (data.aggregatedData.reviewer.photo) + ')'}">
+      </div>
+    </div>
+
+    <div *ngIf="data.connectionState==='Loading'">
+      Loading data...
+    </div>
+
+    <div *ngIf="data.connectionState === 'Manual' || data.connectionState === 'Connected'" class="no-of-jobs-container">
+      <span *ngIf="data.aggregatedData.rating && data.aggregatedData.rating.value > 0">
+        <app-star-rating [noOfStars]="5" [value]="data.aggregatedData.rating.value"></app-star-rating>
+      </span>
+      <p class=review-summary>{{data.aggregatedData.summary}}</p>
+      <p>
+        <span class="reviewer-name">{{data.aggregatedData.reviewer.name}}</span>
+        <span class="comma-separated">
+          <span *ngIf="data.aggregatedData.reviewer.title"
+            class="reviewer-title">{{data.aggregatedData.reviewer.title}}</span>
+          <span *ngIf="data.aggregatedData.organization.name"
+            class="organization-name">{{data.aggregatedData.organization.name}}</span>
+        </span>
+      </p>
+      <p class="date-container toned-down ellipsis">
+        {{(data.aggregatedData.date | date:'MMM yyyy')}}
+      </p>
+    </div>
+  </div>
+
+
+  <app-validation-symbol [status]="data.isValidated? 'Validated' : 'Not Validated'" [position]="'Top Right'">
+  </app-validation-symbol>
+</div>

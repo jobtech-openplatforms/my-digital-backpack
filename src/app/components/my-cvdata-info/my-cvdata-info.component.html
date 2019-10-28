@@ -1,0 +1,31 @@
+<a href="javascript:void(0);" class="hidden-focus" ngbAutofocus></a>
+<div class="modal-header">
+  <h2><span class="mobile-invisible">Grant access to </span>Open Platforms</h2>
+</div>
+<div class="modal-body">
+  <div class="my-cv-data-illustation-container ">
+    <div class="organization-container">
+      <img class="organization-logo" [src]="organization.logo">
+      <div class="organization-text-container">
+        <span>Your </span>
+        <span class="organization-name">{{organization.name}} </span>
+        <span>data</span>
+      </div>
+
+    </div>
+    <img class="my-cv-data-illustation" src="assets/gfx/open_platforms_illustration01.png">
+  </div>
+
+  <p>My digital backpack uses the Open Platforms API to gain access to data from {{organization.name}}. When you press
+    continue
+    you'll need to allow My Digital Backpack to access your platform data though this service.</p>
+</div>
+
+<div class="modal-footer">
+  <span class="right">
+    <button (click)="onConfirm()" class="btn btn-primary">Continue</button>
+  </span>
+  <span class="left">
+    <button (click)="onCancel()" class="btn btn-secondary">Cancel</button>
+  </span>
+</div>
