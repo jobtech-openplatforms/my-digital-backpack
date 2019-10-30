@@ -10,7 +10,6 @@ export class GigDataSelectPlatformComponent implements OnInit, OnChanges {
 
   @Input()
   platforms: GigPlatformInfo[];
-  // platforms$: Observable<CVDataGigPlatformInfo[]>;
 
   @Output()
   selected = new EventEmitter<GigPlatformInfo>();
@@ -23,8 +22,6 @@ export class GigDataSelectPlatformComponent implements OnInit, OnChanges {
   searchPhrase = '';
 
   cvDataAuthorizeUrl: string = null;
-
-  // platforms: CVDataGigPlatformInfo[];
 
   constructor() { }
 
@@ -59,7 +56,6 @@ export class GigDataSelectPlatformComponent implements OnInit, OnChanges {
       }
       this.filteredPlatforms.push(platform);
     }
-    console.log(this.filteredPlatforms);
 
     function sortOnName(a, b) {
       return a.organization.name.toLowerCase().localeCompare(b.organization.name.toLowerCase());

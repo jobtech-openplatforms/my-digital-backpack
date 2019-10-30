@@ -8,7 +8,7 @@ export class SynchedItem {
     private sub;
     constructor(public id: string, private itemObservable: Observable<any>, public targetObj: ItemBase) {
         this.sub = this.itemObservable.subscribe((updatedData) => {
-            console.log('updated data item recieved:', updatedData);
+            // console.log('updated data item recieved:', updatedData);
             if (updatedData) {
                 Utility.replaceObject(this.targetObj, updatedData);
             }

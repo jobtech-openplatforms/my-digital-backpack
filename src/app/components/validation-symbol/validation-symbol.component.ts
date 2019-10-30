@@ -18,7 +18,6 @@ export class ValidationSymbolComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.position);
     this.topRight = this.position === 'Top Right';
     this.inline = this.position === 'Inline';
   }

@@ -44,11 +44,7 @@ export class ServerDataService {
         const docRef = this.usersCollection.doc(authUser.uid).ref;
         docRef.get().then((doc) => {
           if (doc.exists) {
-            console.log('Logged in as user:', authUser.displayName, doc, doc.data());
             const settings = (<UserData>doc.data()).settings;
-            // if (!settings || settings.createdProfile !== true) {
-            //   this.router.navigateByUrl('/new-user');
-            // }
 
           } else {
             console.log('No user saved, let\'s create an account');
@@ -74,11 +70,9 @@ export class ServerDataService {
 
   getCurrentUser(): Promise<UserData> {
     return new Promise((resolve, reject) => {
-      console.log('this.authService.currentUserId', this.authService.currentUserId);
       if (this.authService.currentUserId !== '') {
         this.getUser(this.authService.currentUserId).then(
           (userData) => {
-            console.log('user get complete');
             resolve(userData);
           },
           (e) => {
@@ -105,8 +99,6 @@ export class ServerDataService {
     return new Promise<UserData>((resolve, reject) => {
       this.usersCollection.doc(id).valueChanges().pipe(first()).toPromise().then(
         <any>((userData: UserData) => {
-          console.log('user get complete');
-          console.log(userData);
           resolve(userData);
         }),
         (e: any) => {
@@ -123,7 +115,6 @@ export class ServerDataService {
       this.authService.updateUserProfile(userData.name, userData.photo);
       this.usersCollection.doc(id).set(saveData, { merge: true }).then(
         () => {
-          console.log('user saved complete');
           resolve();
         },
         () => {
@@ -151,7 +142,6 @@ export class ServerDataService {
       const saveData = JSON.parse(JSON.stringify(cvData));
       this.cvsCollection.doc(id).set(saveData, { merge: true }).then(
         () => {
-          console.log('document saved');
           resolve();
         },
         () => {
@@ -166,7 +156,6 @@ export class ServerDataService {
     return new Promise((resolve, reject) => {
       this.cvsCollection.doc(id).delete().then(
         () => {
-          console.log('document deleted');
           resolve();
         },
         () => {
@@ -206,7 +195,6 @@ export class ServerDataService {
   saveDataSource(id: string, data: any) {
     return new Promise((resolve, reject) => {
       const saveData = JSON.parse(JSON.stringify(data));
-      console.log('saveDataSource', saveData);
       saveData.userId = this.authService.currentUserId;
       if (!saveData.owners || saveData.owners.length === 0) {
         saveData.owners = [this.authService.currentUserId];
@@ -214,7 +202,6 @@ export class ServerDataService {
 
       this.dataSourcesCollection.doc(id).set(saveData, { merge: true }).then(
         () => {
-          console.log('datasource saved');
           resolve();
         },
         (e) => {
@@ -229,7 +216,6 @@ export class ServerDataService {
     return new Promise((resolve, reject) => {
       this.dataSourcesCollection.doc(id).delete().then(
         () => {
-          console.log('datasource deleted');
           resolve();
         },
         (e) => {
@@ -276,7 +262,6 @@ export class ServerDataService {
 
       this.commandsCollection.doc(newId).set(data, { merge: true }).then(
         () => {
-          console.log('command saved', data);
           if (requireServerConfirmation) {
             this.commandsCollection.doc(newId)
               .valueChanges()

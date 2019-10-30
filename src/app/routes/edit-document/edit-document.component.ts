@@ -70,7 +70,6 @@ export class EditDocumentComponent implements OnInit, OnDestroy {
 
     const authSubscription = this.authService.authenticatedUser.subscribe((authenticatedUser: AuthenticatedUser) => {
       if (authenticatedUser) {
-        console.log('authenticatedUser', authenticatedUser);
         this.userId = authenticatedUser.uid;
       }
     });

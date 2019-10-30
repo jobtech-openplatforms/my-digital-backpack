@@ -33,13 +33,11 @@ export class AuthenticationService {
       const authResult = <AuthenticatedUser>u;
       if (authResult) {
         if (u.emailVerified) {
-          console.log('Logged in as ', authResult.email, authResult.uid, u.emailVerified);
           this.currentUserId = authResult.uid;
           this.currentUserEmail = authResult.email;
           this.authenticatedUserSubject.next(<AuthenticatedUser>authResult);
         }
       } else {
-        console.log('Logged out');
         this.currentUserId = '';
         this.currentUserEmail = '';
         this.authenticatedUserSubject.next(null);

@@ -21,7 +21,6 @@ export class AutoLoginGuard implements CanActivate {
       // this route gurad is used only on login page to auto-login (currently going to list page)
       this.afAuth.authState.pipe(first()).subscribe((u) => {
         const authResult = <AuthenticatedUser>u;
-        console.log(authResult);
         if (authResult) {
           if (authResult.emailVerified) {
             this.router.navigate(['/list']);
