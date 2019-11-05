@@ -165,6 +165,18 @@ button, .btn {
   font-size: 20px;
   padding: 9px 20px;
   border-radius: 2px;
+  font-weight: bold;
+}
+
+.btn {
+  letter-spacing: 1px;
+}
+
+@media (max-width: 400px) {
+  button, .btn {
+    font-size: 16px;
+    padding: 7px 15px;
+  }
 }
 
 button:last-child, .btn:last-child {
@@ -179,8 +191,8 @@ button:last-child, .btn:last-child {
 
 .btn-secondary {
   color: #000;
-  background-color: #dadada;
-  border-color: #dadada;
+  background-color: #eeeeee;
+  border-color: #eeeeee;
 }
 
 .inline-button {
@@ -306,10 +318,11 @@ input.ng-dirty.ng-invalid.ng-touched {
   color: #6c757d;
 }
 
-body.modal-open {
+
+/* body.modal-open {
   overflow: auto;
   padding-right: 0px!important;
-}
+} */
 
 .modal-open .modal {
   overflow-x: hidden;
@@ -355,7 +368,7 @@ body.modal-open {
 }
 
 .modal-dialog .modal-body {
-  max-height: 70vh;
+  max-height: 65vh;
   overflow: auto;
   padding-top: 0;
   padding-bottom: 0;

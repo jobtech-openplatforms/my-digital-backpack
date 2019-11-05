@@ -49,6 +49,7 @@ export class HeaderComponent implements OnInit {
 
   onHome() {
     // this.router.navigateByUrl('/start');
+    window.location.href = 'https://www.mydigitalbackpack.org';
   }
 
   onBack() {

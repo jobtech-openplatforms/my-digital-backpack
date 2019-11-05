@@ -1,15 +1,17 @@
 <div class="profile-display" tabindex="isEditable?0:-1" (click)="onEdit()" (keydown.enter)="onEdit()"
   [class.editMode]="isEditable===true">
   <!-- <button class="btn edit-button inline" ><i class="fas fa-pen"></i></button> -->
-  <div class="profile-image" [ngStyle]="{'background-image': 'url(' + (data.photo) + ')'}"></div>
-  <div class="profile-content-container">
-    <div class="vertical-centered">
-      <h2>{{data.name}}</h2>
-      <p class="comma-separated">
-        <span *ngIf="this.data.title" class="title-text title keep-together">{{data.title}}</span>
-        <span *ngIf="this.data.birthdate" class="age-text keep-together">{{getAge()}}</span>
-        <span *ngIf="data.location.city" class="location-text keep-together">{{data.location.city}}</span>
-      </p>
+  <div class="profile-columns">
+    <div class="profile-image" [ngStyle]="{'background-image': 'url(' + (data.photo) + ')'}"></div>
+    <div class="profile-content-container">
+      <div class="vertical-centered">
+        <h2>{{data.name}}</h2>
+        <p class="comma-separated">
+          <span *ngIf="this.data.title" class="title-text title keep-together">{{data.title}}</span>
+          <span *ngIf="this.data.birthdate" class="age-text keep-together">{{getAge()}}</span>
+          <span *ngIf="data.location.city" class="location-text keep-together">{{data.location.city}}</span>
+        </p>
+      </div>
     </div>
   </div>
 

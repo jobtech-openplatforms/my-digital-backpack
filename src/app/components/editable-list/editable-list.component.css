@@ -1,4 +1,4 @@
-h1, h2, h3, h4{
+h1, h2, h3, h4 {
     display: inline-block;
     margin-right: 10px;
 }
@@ -9,10 +9,10 @@ h1, h2, h3, h4{
 
 button.edit-item-button {
     margin-top: 0px;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
-.item-container{
+.item-container {
     display: block;
     background: none;
     border: none;
@@ -24,12 +24,12 @@ button.edit-item-button {
     min-height: 120px;
 }
 
-.empty-item .panel{
+.empty-item .panel {
     display: flex;
     min-height: 130px;
 }
 
-.empty-item .panel i{
+.empty-item .panel i {
     margin: auto;
     font-size: 34px;
     color: #b8b8b8;

@@ -1,3 +1,7 @@
+.review-container {
+    position: relative;
+}
+
 .panel-icon-container {
     border-radius: 200px;
     border: none;
@@ -5,14 +9,23 @@
 
 .reviewer-name {
     margin-right: 5px;
+    margin-bottom: 0;
     font-weight: bold;
 }
 
-.panel-icon-container{
+.reviewer-title {
+    display: inline-block;
+}
+
+.panel-icon-container {
     background-image: url("../../../../assets/gfx/placeholder-person.png");
     background-size: cover;
 }
 
 .validated-data-symbol {
     bottom: 3px;
+}
+
+app-validation-symbol {
+    margin-top: -15px;
 }

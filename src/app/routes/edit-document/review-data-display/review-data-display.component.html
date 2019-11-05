@@ -1,4 +1,4 @@
-<div *ngIf="data && data.status !='incomplete'" (click)="onEditItem()" class="panel">
+<div *ngIf="data && data.status !='incomplete'" (click)="onEditItem()" class="review-container">
   <div class="panel-content-container">
     <div class="panel-icon-container">
       <div *ngIf="data.aggregatedData.reviewer.photo" class="panel-icon"
@@ -15,9 +15,9 @@
         <app-star-rating [noOfStars]="5" [value]="data.aggregatedData.rating.value"></app-star-rating>
       </span>
       <p class=review-summary>{{data.aggregatedData.summary}}</p>
+      <p class="reviewer-name">{{data.aggregatedData.reviewer.name}}</p>
       <p>
-        <span class="reviewer-name">{{data.aggregatedData.reviewer.name}}</span>
-        <span class="comma-separated">
+        <span class="reviewer-title-container comma-separated">
           <span *ngIf="data.aggregatedData.reviewer.title"
             class="reviewer-title">{{data.aggregatedData.reviewer.title}}</span>
           <span *ngIf="data.aggregatedData.organization.name"

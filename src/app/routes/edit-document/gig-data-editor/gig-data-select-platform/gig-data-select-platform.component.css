@@ -39,4 +39,6 @@
 .panel-icon-container {
     background-image: url("../../../../../assets/gfx/placeholder-organisation.png");
     background-size: cover;
+    width: 68px;
+    height: 68px;
 }

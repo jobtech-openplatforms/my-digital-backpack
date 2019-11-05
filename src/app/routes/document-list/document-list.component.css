@@ -3,19 +3,33 @@ ul {
   padding-inline-start: 0px;
 }
 
-li h3{
+li h3 {
   display: inline-block;
 }
 
-li .menu-button{
+.document-container {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+li .menu-button {
   float: right;
 }
 
 .dropdown-toggle::after {
-  display:none;
+  display: none;
   background: none;
 }
 
-.document-content{
+.document-content {
   text-align: left;
+  font-weight: normal;
+  width: 100%;
+  padding: 0;
+}
+
+@media (max-width: 400px) {
+  .panel {
+    padding: 15px;
+  }
 }

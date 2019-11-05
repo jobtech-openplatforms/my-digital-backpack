@@ -92,7 +92,7 @@ export class ProfileDisplayComponent implements OnInit {
           type: 'date',
         },
         <DynamicFormValueTextarea>{
-          name: 'Summary',
+          name: 'About me',
           propName: 'summary',
           id: 'edit-summary',
           type: 'textarea',
