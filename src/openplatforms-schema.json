@@ -1,0 +1,513 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://openplatforms.org/schemas/user-platform-data.json",
+    "type": "object",
+    "title": "Root",
+    "description": "This is a json schema for user data imported by the Open Platforms API",
+    "required": [
+        "interactions"
+    ],
+    "properties": {
+        "interactions": {
+            "$id": "#/properties/interactions",
+            "type": "array",
+            "title": "Interactions",
+            "description": "This is a list of all instances of the user supplying a service, such as a gig, job or project.",
+            "default": null,
+            "items": {
+                "$id": "#/properties/interactions/items",
+                "type": "object",
+                "title": "Items",
+                "description": "An explanation about the purpose of this instance.",
+                "required": [
+                    "id",
+                    "period",
+                    "type",
+                    "outcome"
+                ],
+                "properties": {
+                    "id": {
+                        "$id": "#/properties/interactions/items/properties/id",
+                        "type": "string",
+                        "title": "Id",
+                        "description": "Unique identifier for interaction",
+                        "default": "",
+                        "examples": [
+                            "8241029"
+                        ],
+                        "pattern": "^(.*)$"
+                    },
+                    "period": {
+                        "$id": "#/properties/interactions/items/properties/period",
+                        "type": "object",
+                        "title": "Period",
+                        "description": "The time frame of the interaction.",
+                        "default": null,
+                        "properties": {
+                            "start": {
+                                "$id": "#/properties/interactions/items/properties/period/properties/start",
+                                "type": "string",
+                                "title": "Start",
+                                "description": "Start of interaction",
+                                "default": "",
+                                "examples": [
+                                    "2018-11-03T14:03:16.1760745+02:00"
+                                ],
+                                "pattern": "^(.*)$"
+                            },
+                            "end": {
+                                "$id": "#/properties/interactions/items/properties/period/properties/end",
+                                "type": "string",
+                                "title": "End",
+                                "description": "End of interaction",
+                                "default": "",
+                                "examples": [
+                                    "2019-05-14T14:03:16.1760763+02:00"
+                                ],
+                                "pattern": "^(.*)$"
+                            }
+                        },
+                        "required": [
+                            "end"
+                        ]
+                    },
+                    "client": {
+                        "$id": "#/properties/interactions/items/properties/client",
+                        "type": "object",
+                        "title": "Client",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": null,
+                        "required": [
+                            "id",
+                            "name",
+                            "photoUri"
+                        ],
+                        "properties": {
+                            "id": {
+                                "$id": "#/properties/interactions/items/properties/client/properties/id",
+                                "type": "string",
+                                "title": "Id",
+                                "description": "Unique identifier of the client",
+                                "default": "",
+                                "examples": [
+                                    "9118922"
+                                ],
+                                "pattern": "^(.*)$"
+                            },
+                            "name": {
+                                "$id": "#/properties/interactions/items/properties/client/properties/name",
+                                "type": "string",
+                                "title": "Name",
+                                "description": "The name of the client, if not supplied use empty string..",
+                                "default": "",
+                                "examples": [
+                                    "John Client"
+                                ],
+                                "pattern": "^(.*)$"
+                            },
+                            "photoUri": {
+                                "$id": "#/properties/interactions/items/properties/client/properties/photoUri",
+                                "type": "string",
+                                "title": "Photouri",
+                                "description": "Uri to the photo/avatar of the client",
+                                "default": "",
+                                "examples": [
+                                    "https://path.to.picture"
+                                ],
+                                "pattern": "^(.*)$"
+                            }
+                        }
+                    },
+                    "type": {
+                        "$id": "#/properties/interactions/items/properties/type",
+                        "type": "string",
+                        "title": "Type",
+                        "description": "This is the type of gig/service. ",
+                        "default": "",
+                        "examples": [
+                            "Web design",
+                            "Delivery"
+                        ],
+                        "pattern": "^(.*)$"
+                    },
+                    "outcome": {
+                        "$id": "#/properties/interactions/items/properties/outcome",
+                        "type": "object",
+                        "title": "Outcome",
+                        "description": "This section contains possible reviews or ratings of the interaction.",
+                        "default": null,
+                        "properties": {
+                            "review": {
+                                "$id": "#/properties/interactions/items/properties/outcome/properties/review",
+                                "type": "object",
+                                "title": "Review",
+                                "description": "Written review of the interaction",
+                                "default": null,
+                                "required": [
+                                    "title",
+                                    "text"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "$id": "#/properties/interactions/items/properties/outcome/properties/review/properties/title",
+                                        "type": "string",
+                                        "title": "Title",
+                                        "description": "Title of the review",
+                                        "default": "",
+                                        "examples": [
+                                            "Great freelancer"
+                                        ],
+                                        "pattern": "^(.*)$"
+                                    },
+                                    "text": {
+                                        "$id": "#/properties/interactions/items/properties/outcome/properties/review/properties/text",
+                                        "type": "string",
+                                        "title": "Text",
+                                        "description": "Main text of the review",
+                                        "default": "",
+                                        "examples": [
+                                            "I am so happy with this designer. Will hire again."
+                                        ],
+                                        "pattern": "^(.*)$"
+                                    }
+                                }
+                            },
+                            "ratings": {
+                                "$id": "#/properties/interactions/items/properties/outcome/properties/ratings",
+                                "type": "array",
+                                "title": "Ratings",
+                                "description": "List with one or more ratings",
+                                "default": null,
+                                "items": {
+                                    "$id": "#/properties/interactions/items/properties/outcome/properties/ratings/items",
+                                    "type": "object",
+                                    "title": "Items",
+                                    "description": "",
+                                    "default": null,
+                                    "properties": {
+                                        "name": {
+                                            "$id": "#/properties/interactions/items/properties/outcome/properties/ratings/items/properties/name",
+                                            "type": "string",
+                                            "title": "Name",
+                                            "description": "Used to differentiate when there are multiple ratings, for example: 'Service', 'Cleanliness' and 'Pricing'. If there is only one rating, you can omit this field.",
+                                            "default": "",
+                                            "examples": [
+                                                "Delivery on time"
+                                            ],
+                                            "pattern": "^(.*)$"
+                                        },
+                                        "value": {
+                                            "$id": "#/properties/interactions/items/properties/outcome/properties/ratings/items/properties/value",
+                                            "type": "number",
+                                            "title": "Value",
+                                            "description": "Value of rating (can be decimal). If rating is thumbs up/down use numeric values 1(up)/0 (down)",
+                                            "default": 0,
+                                            "examples": [
+                                                5
+                                            ]
+                                        },
+                                        "min": {
+                                            "$id": "#/properties/interactions/items/properties/outcome/properties/ratings/items/properties/min",
+                                            "type": "number",
+                                            "title": "Min",
+                                            "description": "Lowest possible rating value",
+                                            "default": 0,
+                                            "examples": [
+                                                1
+                                            ]
+                                        },
+                                        "max": {
+                                            "$id": "#/properties/interactions/items/properties/outcome/properties/ratings/items/properties/max",
+                                            "type": "number",
+                                            "title": "Max",
+                                            "description": "Highest possible rating value",
+                                            "default": 5,
+                                            "examples": [
+                                                5
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "value",
+                                        "min",
+                                        "max"
+                                    ]
+                                }
+                            },
+                            "success": {
+                                "$id": "#/properties/interactions/items/properties/outcome/properties/success",
+                                "type": "boolean",
+                                "title": "Success",
+                                "description": "Indicates if the interaction was successful or not (based on your client rating, or if you have other ways of deciding this)",
+                                "default": true,
+                                "examples": [
+                                    true
+                                ]
+                            }
+                        },
+                        "required": [
+                            "success"
+                        ]
+                    },
+                    "additionalData": {
+                        "$id": "#/properties/interactions/items/properties/additionalData",
+                        "type": "object",
+                        "title": "Additionaldata",
+                        "description": "This section contains addidtional data about the interaction",
+                        "default": null,
+                        "properties": {
+                            "location": {
+                                "$id": "#/properties/interactions/items/properties/additionalData/properties/location",
+                                "type": "string",
+                                "title": "Location",
+                                "description": "String containing the location of the interaction, preferably in the following format 'City/Region/Country'",
+                                "default": "",
+                                "examples": [
+                                    "Visby/Gotland/Sweden"
+                                ],
+                                "pattern": "^(.*)$"
+                            },
+                            "title": {
+                                "$id": "#/properties/interactions/items/properties/additionalData/properties/title",
+                                "type": "string",
+                                "title": "Title",
+                                "description": "The title of the project as used when presented on the platform.",
+                                "default": "",
+                                "examples": [
+                                    "Please help with my Wordpress website"
+                                ],
+                                "pattern": "^(.*)$"
+                            },
+                            "description": {
+                                "$id": "#/properties/interactions/items/properties/additionalData/properties/description",
+                                "type": "string",
+                                "title": "Description",
+                                "description": "The description of the project as used when presented on the platform.",
+                                "default": "",
+                                "examples": [
+                                    "Web design"
+                                ],
+                                "pattern": "^(.*)$"
+                            },
+                            "images": {
+                                "$id": "#/properties/interactions/items/properties/additionalData/properties/images",
+                                "type": "array",
+                                "title": "Images",
+                                "description": "list with one or more images connected to the interaction, for example photos or screenshots taken during the project or of the end result",
+                                "default": null,
+                                "items": {
+                                    "$id": "#/properties/interactions/items/properties/additionalData/properties/images/items",
+                                    "type": "object",
+                                    "title": "Items",
+                                    "description": "",
+                                    "default": null,
+                                    "required": [
+                                        "uri",
+                                        "caption"
+                                    ],
+                                    "properties": {
+                                        "uri": {
+                                            "$id": "#/properties/interactions/items/properties/additionalData/properties/images/items/properties/uri",
+                                            "type": "string",
+                                            "title": "Uri",
+                                            "description": "",
+                                            "default": "",
+                                            "examples": [
+                                                "https://placeimg.com/900/600/tech"
+                                            ],
+                                            "pattern": "^(.*)$"
+                                        },
+                                        "caption": {
+                                            "$id": "#/properties/interactions/items/properties/additionalData/properties/images/items/properties/caption",
+                                            "type": "string",
+                                            "title": "Caption",
+                                            "description": "Caption for image",
+                                            "default": "",
+                                            "examples": [
+                                                "Sample Tech image"
+                                            ],
+                                            "pattern": "^(.*)$"
+                                        }
+                                    }
+                                }
+                            },
+                            "noOfHours": {
+                                "$id": "#/properties/interactions/items/properties/additionalData/properties/noOfHours",
+                                "type": "integer",
+                                "title": "Noofhours",
+                                "description": "Estimated no of hours for this interaction",
+                                "default": 0,
+                                "examples": [
+                                    1347
+                                ]
+                            },
+                            "income": {
+                                "$id": "#/properties/interactions/items/properties/additionalData/properties/income",
+                                "type": "object",
+                                "title": "Income",
+                                "description": "Estimated income from this interaction",
+                                "default": null,
+                                "required": [
+                                    "amount",
+                                    "currency"
+                                ],
+                                "properties": {
+                                    "amount": {
+                                        "$id": "#/properties/interactions/items/properties/additionalData/properties/income/properties/amount",
+                                        "type": "integer",
+                                        "title": "Amount",
+                                        "description": "",
+                                        "default": 0,
+                                        "examples": [
+                                            5000
+                                        ]
+                                    },
+                                    "currency": {
+                                        "$id": "#/properties/interactions/items/properties/additionalData/properties/income/properties/currency",
+                                        "type": "string",
+                                        "title": "Currency",
+                                        "description": "",
+                                        "default": "",
+                                        "examples": [
+                                            "EUR"
+                                        ],
+                                        "pattern": "^(.*)$"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "achievements": {
+            "$id": "#/properties/achievements",
+            "type": "array",
+            "title": "Achievements",
+            "description": "Use this list for achievements, skill certificates, badges etc, that the user has gained on your service",
+            "default": null,
+            "items": {
+                "$id": "#/properties/achievements/items",
+                "type": "object",
+                "title": "Items",
+                "description": "",
+                "default": null,
+                "required": [
+                    "id",
+                    "timeStamp",
+                    "type",
+                    "name",
+                    "description"
+                ],
+                "properties": {
+                    "id": {
+                        "$id": "#/properties/achievements/items/properties/id",
+                        "type": "string",
+                        "title": "Id",
+                        "description": "Unique id for this achievement",
+                        "default": "",
+                        "examples": [
+                            "7704264"
+                        ],
+                        "pattern": "^(.*)$"
+                    },
+                    "timeStamp": {
+                        "$id": "#/properties/achievements/items/properties/timeStamp",
+                        "type": "string",
+                        "title": "Timestamp",
+                        "description": "Utc timestamp",
+                        "default": "",
+                        "examples": [
+                            "2018-11-02T14:03:16.1760901+02:00"
+                        ],
+                        "pattern": "^(.*)$"
+                    },
+                    "type": {
+                        "$id": "#/properties/achievements/items/properties/type",
+                        "type": "string",
+                        "title": "Type",
+                        "description": "Use 'QualificationAssessment' (for example a test that shows the user's skill in a certain software) or 'Badge' (is used for other achievements on your platform for example 'Top rated driver')",
+                        "default": "",
+                        "examples": [
+                            "Badge",
+                            "QualificationAssessment"
+                        ],
+                        "pattern": "^(.*)$"
+                    },
+                    "name": {
+                        "$id": "#/properties/achievements/items/properties/name",
+                        "type": "string",
+                        "title": "Name",
+                        "description": "Name of achievement (English if available)",
+                        "default": "",
+                        "examples": [
+                            "Top Talent"
+                        ],
+                        "pattern": "^(.*)$"
+                    },
+                    "description": {
+                        "$id": "#/properties/achievements/items/properties/description",
+                        "type": "string",
+                        "title": "Description",
+                        "description": "Short text describing the achievement, typically shorter than 128 characters. (English if available)",
+                        "default": "",
+                        "examples": [
+                            "The user is currently part of the top talent program."
+                        ],
+                        "pattern": "^(.*)$"
+                    },
+                    "score": {
+                        "$id": "#/properties/achievements/items/properties/score",
+                        "type": "object",
+                        "title": "Score",
+                        "description": "Possible score of the achievement",
+                        "default": null,
+                        "required": [
+                            "value"
+                        ],
+                        "properties": {
+                            "value": {
+                                "$id": "#/properties/achievements/items/properties/score/properties/value",
+                                "type": [
+                                    "string",
+                                    "number"
+                                ],
+                                "title": "Value",
+                                "description": "Score or level of achievement",
+                                "default": 0,
+                                "examples": [
+                                    100,
+                                    "A"
+                                ]
+                            },
+                            "label": {
+                                "$id": "#/properties/achievements/items/properties/score/properties/label",
+                                "type": "string",
+                                "title": "Label",
+                                "description": "Possible label shown below achievement value",
+                                "default": "",
+                                "examples": [
+                                    "percent",
+                                    "points"
+                                ],
+                                "pattern": "^(.*)$"
+                            }
+                        }
+                    },
+                    "badgeIconUri": {
+                        "$id": "#/properties/achievements/items/properties/badgeIconUri",
+                        "type": "string",
+                        "title": "Badgeiconuri",
+                        "description": "Link to badge graphics to be shown, otherwise your platform logo will be used.",
+                        "default": "",
+                        "examples": [
+                            "https://imgplaceholder.com/320x320/dddddd/757575/fa-bank"
+                        ],
+                        "pattern": "^(.*)$"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -50,6 +50,8 @@ export class PlatformService {
   private static platforms: PlatformInfoViewModel[] = [
     new PlatformInfoViewModel('rover.com', 'Bonsai', 'Bonsai är din bästa vän när du behöver personal.',
       'Sweden', OrganizationType.PrivateCompany, 'assets/gfx/platform-icons/bonsai.png'),
+    new PlatformInfoViewModel('bizzcoo.com', 'Bizzcoo', 'We accelerate your business.',
+      'Sweden', OrganizationType.PrivateCompany, 'assets/gfx/platform-icons/bizzcoo.png'),
     new PlatformInfoViewModel('budbee.com', 'Budbee', 'Delivering in time for life.',
       'Sweden', OrganizationType.PrivateCompany, 'assets/gfx/platform-icons/budbee.png'),
     new PlatformInfoViewModel('care.com', 'Care.com', 'Bättre hjälp börjar här.',
